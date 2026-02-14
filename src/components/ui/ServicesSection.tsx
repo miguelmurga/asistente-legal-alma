@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 // Tipos para las props del componente
@@ -15,7 +15,7 @@ interface ServicesSectionProps {
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
-    const cardVariants = {
+    const cardVariants: Variants = {
         offscreen: {
             y: 50,
             opacity: 0
