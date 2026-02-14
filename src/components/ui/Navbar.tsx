@@ -7,88 +7,99 @@ import {
     NavbarContent,
     NavbarItem,
     Button,
+    Link,
 } from "@heroui/react";
-import Link from "next/link"; // Importar Link de Next.js para mejor navegación
 import { Scale } from "lucide-react";
 
+/**
+ * LUXURY LEGAL NAVBAR COMPONENT
+ * Design Language: Modern Authority / Minimalist Luxury
+ */
 export default function Navbar() {
     const menuItems = [
-        { name: "Inicio", href: "/" },
-        { name: "Servicios", href: "#servicios" },
-        { name: "Sobre Mí", href: "#sobre-mi" },
-        { name: "Contacto", href: "#contacto" },
+        { name: "Inicio", href: "#" },
+        { name: "Áreas de Práctica", href: "#servicios" },
+        { name: "La Firma", href: "#perfil" },
+        { name: "Casos de Éxito", href: "#casos" },
     ];
 
     return (
         <HeroNavbar
             shouldHideOnScroll
             maxWidth="xl"
-            // Requisito: Fondo blanco translúcido, desenfoque y borde inferior dorado fino
-            className="bg-white/80 backdrop-blur-md border-b-[1px] border-brand-gold/50"
+            height="5.5rem"
+            isBordered={false}
+            className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md backdrop-saturate-150 border-b border-white/20"
             classNames={{
-                wrapper: "px-6 sm:px-8",
-                item: [
-                    "flex",
-                    "relative",
-                    "h-full",
-                    "items-center",
-                    "data-[active=true]:after:content-['']",
-                    "data-[active=true]:after:absolute",
-                    "data-[active=true]:after:bottom-0",
-                    "data-[active=true]:after:left-0",
-                    "data-[active=true]:after:right-0",
-                    "data-[active=true]:after:h-[2px]",
-                    "data-[active=true]:after:bg-brand-gold",
-                ],
+                wrapper: "px-4 sm:px-6 md:px-12 lg:px-16 max-w-[1440px] h-full gap-2 sm:gap-4",
             }}
         >
-            {/* --- LOGO Y MARCA --- */}
-            <NavbarBrand className="gap-3 cursor-pointer" as={Link} href="/">
-                {/* Requisito: Icono de balanza en color 'brand-gold' */}
-                <div className="p-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold">
-                    <Scale size={22} strokeWidth={1.5} />
-                </div>
+            {/* --- 1. BRAND IDENTITY (The Badge) --- */}
+            <NavbarBrand className="grow-0 flex-shrink-0">
+                {/* SOLUCIÓN DEFINITIVA:
+                   Creamos un DIV contenedor manual 'flex items-center'.
+                   Esto ignora cualquier comportamiento extraño de <NavbarBrand>.
 
-                <div className="flex flex-col leading-tight">
-                    {/* Requisito: Nombre con fuente serif elegante */}
-                    <p className="font-serif font-bold text-lg sm:text-xl text-brand-dark-text tracking-wide">
-                        Alma Liset Encarnacion
-                    </p>
-                    {/* Requisito: Cargo con fuente sans-serif más pequeña */}
-                    <p className="font-sans text-[10px] sm:text-xs text-brand-green uppercase tracking-[0.2em] font-medium">
-                        Asesoría Legal
-                    </p>
+                   'gap-6' = 24px de espacio real entre logo y texto.
+                   Puedes subirlo a 'gap-8' si quieres aun más espacio.
+                */}
+                <div className="flex items-center gap-6 sm:gap-7">
+
+                    {/* LOGO */}
+                    <div className="group relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#062C30] text-[#C5A059] transition-transform duration-500 hover:rotate-[360deg] shadow-xl shadow-[#062C30]/10">
+                        <Scale className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={1.2} />
+                    </div>
+
+                    {/* TEXTO */}
+                    <div className="flex flex-col leading-tight select-none justify-center">
+                        <span className="font-serif italic text-medium sm:text-xl md:text-2xl text-[#062C30] tracking-tight whitespace-nowrap">
+                            Alma Encarnación
+                        </span>
+
+                        <span className="hidden sm:block font-sans text-[7px] sm:text-[9px] font-bold text-[#C5A059] tracking-[0.2em] sm:tracking-[0.3em] uppercase opacity-90">
+                            Firma Legal Especializada
+                        </span>
+                    </div>
                 </div>
             </NavbarBrand>
 
-            {/* --- ENLACES DE NAVEGACIÓN (Centro) --- */}
-            <NavbarContent className="hidden sm:flex gap-8" justify="center">
+            {/* --- 2. CENTRAL NAVIGATION (Minimalist) --- */}
+            <NavbarContent className="hidden lg:flex gap-8 xl:gap-12" justify="center">
                 {menuItems.map((item) => (
                     <NavbarItem key={item.name}>
                         <Link
                             href={item.href}
-                            className="text-sm font-medium text-brand-dark-text hover:text-brand-green transition-colors duration-300 relative group"
+                            className="text-[11px] font-bold text-[#062C30]/70 hover:text-[#062C30] tracking-[0.2em] uppercase transition-all duration-400 relative group py-2"
                         >
                             {item.name}
-                            {/* Animación sutil de subrayado dorado al pasar el cursor */}
-                            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-1/2 w-1 h-1 bg-[#C5A059] rounded-full opacity-0 -translate-x-1/2 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 shadow-[0_0_8px_#C5A059]"></span>
                         </Link>
                     </NavbarItem>
                 ))}
             </NavbarContent>
 
-            {/* --- BOTÓN DE ACCIÓN (Derecha) --- */}
+            {/* --- 3. THE CALL TO ACTION (Refined) --- */}
             <NavbarContent justify="end">
                 <NavbarItem>
                     <Button
                         as={Link}
-                        href="#agendar"
-                        // Requisito: Fondo brand-green, texto blanco, efecto de crecimiento
-                        className="bg-brand-green text-white font-medium shadow-md shadow-brand-green/20
-                       hover:scale-105 hover:shadow-lg transition-transform duration-300 rounded-lg px-6"
-                        variant="flat"
+                        href="#contacto"
+                        variant="bordered"
+                        radius="sm"
+                        className="
+              border-[0.5px] border-[#062C30]/30
+              text-[#062C30] font-sans font-bold uppercase
+              text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.15em]
+              px-3 sm:px-8
+              h-9 sm:h-11
+              hover:bg-[#062C30] hover:text-[#F5F5F7] hover:border-[#062C30]
+              transition-all duration-500 ease-in-out
+              bg-transparent backdrop-blur-sm
+              min-w-fit
+            "
                     >
-                        Agendar Cita
+                        <span className="block sm:hidden">Agendar</span>
+                        <span className="hidden sm:block">Agendar Cita</span>
                     </Button>
                 </NavbarItem>
             </NavbarContent>

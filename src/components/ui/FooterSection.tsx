@@ -1,37 +1,54 @@
 import React from 'react';
 import { Linkedin, Facebook, Instagram } from 'lucide-react';
+import Link from "next/link";
+import { Scale } from "lucide-react";
 
 const FooterSection: React.FC = () => {
+    const socialLinks = [
+        { name: 'LinkedIn', href: '#', icon: Linkedin },
+        { name: 'Facebook', href: '#', icon: Facebook },
+        { name: 'Instagram', href: '#', icon: Instagram },
+    ];
+
     return (
-        <footer className="bg-brand-green text-brand-light-text border-t border-brand-gold/20">
-            <div className="container mx-auto px-6 py-6">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    
+        <footer className="bg-primary border-t-4 border-accent">
+            <div className="container mx-auto px-6 sm:px-8 py-16">
+                <div className="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-12 lg:gap-8">
+
                     {/* Branding */}
-                    <div className="text-center md:text-left order-1">
-                        <h3 className="text-lg font-serif font-bold text-white">Alma Liset Encarnacion Anaya</h3>
-                        <p className="text-xs text-brand-silver/80">Asesoría Legal Profesional</p>
+                    <div className="flex flex-col items-center lg:items-start gap-4">
+                        <Link href="/" className="flex items-center gap-3 group">
+                             <div className="p-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+                                <Scale size={22} strokeWidth={1.5} />
+                            </div>
+                            <div className="flex flex-col leading-tight">
+                                <p className="font-serif font-bold text-xl text-white tracking-wide">
+                                    Alma Liset Encarnacion
+                                </p>
+                                <p className="font-sans text-xs text-light-text/70 uppercase tracking-[0.2em] font-medium">
+                                    Asesoría Legal
+                                </p>
+                            </div>
+                        </Link>
+                    </div>
+                    
+                    {/* Copyright */}
+                    <div className="text-sm text-light-text/60 order-last lg:order-none">
+                        &copy; {new Date().getFullYear()} Alma Liset Encarnacion. Todos los derechos reservados.
                     </div>
 
                     {/* Social Media Links */}
-                    <div className="flex gap-5 order-2">
-                        <a href="#" aria-label="LinkedIn" className="text-brand-silver hover:text-brand-gold transition-colors">
-                            <Linkedin size={20} />
-                        </a>
-                        <a href="#" aria-label="Facebook" className="text-brand-silver hover:text-brand-gold transition-colors">
-                            <Facebook size={20} />
-                        </a>
-                        <a href="#" aria-label="Instagram" className="text-brand-silver hover:text-brand-gold transition-colors">
-                            <Instagram size={20} />
-                        </a>
-                    </div>
-                    
-                    {/* Copyright (Mobile Separator) */}
-                    <hr className="w-full border-brand-silver/10 md:hidden order-3 mt-4" />
-
-                    {/* Copyright */}
-                    <div className="text-sm text-brand-silver/70 order-4 md:order-3">
-                        &copy; {new Date().getFullYear()} Todos los derechos reservados.
+                    <div className="flex gap-6">
+                        {socialLinks.map((social) => (
+                             <a
+                                key={social.name}
+                                href={social.href}
+                                aria-label={social.name}
+                                className="text-light-text/70 hover:text-accent hover:scale-110 transition-all duration-300"
+                            >
+                                <social.icon size={24} strokeWidth={1.5} />
+                            </a>
+                        ))}
                     </div>
 
                 </div>

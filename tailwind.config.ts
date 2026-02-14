@@ -9,17 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta Refinada para Asesoría Legal
-        'brand-green': '#103A24',       // Verde profundo (Autoridad)
-        'brand-gold': '#C5A059',        // Dorado mate (Elegancia)
-        'brand-silver': '#E5E7EB',      // Plata/Gris claro (Modernidad)
-        'brand-light': '#F9F7F2',       // Blanco roto/Crema (Fondo suave)
-        'brand-dark-text': '#1F2937',   // Texto principal (Legibilidad)
-        'brand-light-text': '#F3F4F6',  // Texto sobre fondos oscuros
-
-        // Mantenemos compatibilidad si heredas componentes previos
-        "green-primary": "#103A24",
-        "gold-primary": "#C5A059",
+        // Paleta Corporativa Premium para Firma Legal
+        'primary': '#062C30',      // Verde Profundo (Autoridad, Fondo Oscuro)
+        'accent': '#C5A059',       // Dorado/Bronce (Detalles, Botones, Bordes)
+        'light': '#F5F5F7',        // Gris muy tenue (Fondos Claros)
+        'dark-text': '#1F2937',   // Texto principal (Legibilidad)
+        'light-text': '#F3F4F6',  // Texto sobre fondos oscuros
       },
       fontFamily: {
         serif: ["var(--font-serif)", "serif"],
@@ -33,13 +28,13 @@ const config: Config = {
       themes: {
         light: {
           colors: {
-            background: "#F9F7F2", // Usando brand-light por defecto
-            foreground: "#1F2937", // Usando brand-dark-text
+            background: "#FFFFFF", // Fondo principal ahora es blanco
+            foreground: "#062C30", // Texto principal es el Verde Profundo
             primary: {
-              DEFAULT: "#103A24",
-              foreground: "#F9F7F2",
+              DEFAULT: "#062C30",
+              foreground: "#FFFFFF",
             },
-            focus: "#C5A059",
+            focus: "#C5A059", // El foco de atención es el acento Dorado
           },
         },
       },

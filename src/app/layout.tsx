@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${playfair.variable} ${lato.variable} font-sans bg-brand-light`}>
+      <body className={`${playfair.variable} ${lato.variable} font-sans bg-white text-dark-text`}>
         <div className="relative">
           {children}
         </div>
