@@ -42,8 +42,13 @@ export default function Navbar() {
                 <div className="flex items-center">
 
                     {/* A. EL LOGO */}
-                    <div className="group relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#062C30] text-[#C5A059] shadow-lg shadow-[#062C30]/10 transition-all duration-500 hover:shadow-[#C5A059]/30">
-                        <Scale className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-700 ease-out group-hover:scale-110" strokeWidth={1.5} />
+                    <div className="group relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-transparent text-[#C5A059] shadow-lg shadow-[#062C30]/10 transition-all duration-500 hover:shadow-[#C5A059]/30 overflow-hidden">
+                        <img 
+                            src="/images/logo.png" 
+                            alt="Logo de Alma Encarnación Abogada" 
+                            className="object-contain"
+                            style={{ maxWidth: '24px', maxHeight: '24px' }}
+                        />
                     </div>
 
                     {/* B. SEPARADOR FÍSICO 1 (La técnica que funciona) */}
