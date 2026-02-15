@@ -4,7 +4,7 @@ import { Metadata } from "next";
 // Importación de componentes de UI
 import Navbar from "@/components/ui/Navbar";
 import HeroSection from "@/components/ui/HeroSection";
-import ServicesSection from "@/components/ui/ServicesSection";
+import ServicesSection, { Service } from "@/components/ui/ServicesSection";
 import AboutSection from "@/components/ui/AboutSection";
 import ContactSection from "@/components/ui/ContactSection";
 import FooterSection from "@/components/ui/FooterSection";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-    const servicesData = [
+    const servicesData: Service[] = [
         { id: 1, title: "Divorcios", description: "Disolución del vínculo matrimonial, ya sea de mutuo acuerdo o contencioso, protegiendo sus derechos.", icon: 'HeartCrack' },
         { id: 2, title: "Pensiones Alimenticias", description: "Aseguramiento del sustento para hijos o cónyuges, cálculo justo y ejecución de pagos.", icon: 'Baby' },
         { id: 3, title: "Sucesiones (Testamentos)", description: "Juicios sucesorios intestamentarios y testamentarios para la correcta transmisión de bienes y patrimonio.", icon: 'ScrollText' },
