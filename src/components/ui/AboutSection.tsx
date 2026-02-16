@@ -76,12 +76,6 @@ const AboutSection: React.FC = () => {
                                     <span>Licenciatura en Derecho</span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="font-semibold text-primary">Institución Educativa:</span>
-                                    <span>Universidad Multitécnica Profesional</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="font-semibold text-primary">Fecha de Titulación:</span>
-                                    <span>13/09/2016</span>
                                 </div>
                             </div>
                             <a
