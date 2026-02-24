@@ -4,8 +4,16 @@ import React from 'react';
 import Link from 'next/link';
 import { Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function FloatingChatButton() {
+  const pathname = usePathname();
+
+  // No mostrar el botón flotante si ya estamos en la página del asistente
+  if (pathname === '/asistente') {
+    return null;
+  }
+
   return (
     <motion.div
       initial={{ scale: 0, opacity: 0 }}

@@ -317,7 +317,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
           </Button>
         </form>
         <p className="text-[10px] text-center text-slate-300 mt-6 uppercase font-black tracking-[0.3em]">
-          Privacidad Garantizada • Asesoría Legal Boutique
+          ASESORÍA LEGAL COLIMA • CONFIDENCIAL Y SEGURA
         </p>
       </div>
     </div>
