@@ -251,37 +251,34 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                     </div>
                   )}
 
-                  {/* Quick Action Grid with HeroUI Buttons */}
+                  {/* Quick Action Grid - Micro-Subtle Boutique Style */}
                   {message.role === 'assistant' && message.status === 'completed' && (
-                    <div className="mt-8 pt-8 border-t border-slate-50 grid grid-cols-3 gap-3">
-                      <Button
-                        as="a"
-                        href={`tel:${message.contactInfo?.phone?.replace(/\s+/g, '') || '3122251010'}`}
-                        variant="flat"
-                        size="sm"
-                        className="bg-slate-50 text-[#062C30] font-black uppercase text-[10px] tracking-widest h-14"
-                        startContent={<Phone size={16} className="text-[#C5A059]" />}
-                      >
-                        Llamar
-                      </Button>
+                    <div className="mt-5 pt-5 border-t border-slate-50 flex flex-wrap gap-2">
                       <Button
                         as="a"
                         href={`https://wa.me/${(message.contactInfo?.whatsapp || '523122251010').replace(/\+/g, '').replace(/\s+/g, '')}`}
                         target="_blank"
                         variant="flat"
-                        size="sm"
-                        className="bg-slate-50 text-green-700 font-black uppercase text-[10px] tracking-widest h-14"
-                        startContent={<MessageSquare size={16} className="text-green-500" />}
+                        className="bg-green-50/50 text-green-700 font-bold h-8 px-3 text-[10px] rounded-lg min-w-0"
+                        startContent={<MessageSquare size={12} strokeWidth={2.5} />}
                       >
                         WhatsApp
+                      </Button>
+                      <Button
+                        as="a"
+                        href={`tel:${message.contactInfo?.phone?.replace(/\s+/g, '') || '3122251010'}`}
+                        variant="flat"
+                        className="bg-slate-50/50 text-slate-500 font-bold h-8 px-3 text-[10px] rounded-lg min-w-0"
+                        startContent={<Phone size={12} strokeWidth={2} />}
+                      >
+                        Llamar
                       </Button>
                       <Button
                         as={Link}
                         href="/#contacto"
                         variant="flat"
-                        size="sm"
-                        className="bg-slate-50 text-[#C5A059] font-black uppercase text-[10px] tracking-widest h-14"
-                        startContent={<Calendar size={16} />}
+                        className="bg-slate-50/50 text-slate-500 font-bold h-8 px-3 text-[10px] rounded-lg min-w-0"
+                        startContent={<Calendar size={12} strokeWidth={2} />}
                       >
                         Agendar
                       </Button>
