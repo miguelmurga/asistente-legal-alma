@@ -16,73 +16,97 @@ const ContactSection: React.FC = () => {
     };
 
     return (
-        <section id="contacto" className="bg-[#062C30] text-white font-sans p-8 md:p-12 mt-12 rounded-t-3xl shadow-2xl relative pb-40">
-            <div className="max-w-5xl mx-auto space-y-16">
+        <section id="contacto" className="bg-[#062C30] text-white font-sans py-24 sm:py-32 mt-12 sm:rounded-t-[4rem] shadow-2xl relative" aria-labelledby="contact-heading">
+            <div className="container mx-auto px-6 max-w-6xl">
                 
-                {/* Encabezado */}
-                <div className="text-center space-y-4">
+                {/* Header with Luxury Whitespace */}
+                <div className="text-center space-y-6 mb-20 md:mb-32">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                   >
-                    <h2 id="contact-heading" className="text-4xl md:text-5xl font-serif font-bold text-[#C5A059] mb-4">
-                        Inicie su Consulta
-                    </h2>
-                    <p className="text-white/90 max-w-2xl mx-auto text-lg mt-4 leading-relaxed font-sans">
-                      Contáctenos directamente por WhatsApp o visite nuestro despacho. Estamos listos para escuchar su caso y ofrecerle la mejor solución.
+                    <h2 id="contact-heading" className="text-4xl md:text-6xl font-serif font-bold text-[#C5A059] mb-4 tracking-tight">Inicie su Consulta</h2>
+                    <p className="text-white/80 max-w-2xl mx-auto font-sans font-medium text-lg leading-relaxed">
+                      Contáctenos directamente por WhatsApp para agendar su cita. La atención en despacho es exclusivamente con previa programación para brindarle la mejor solución legal.
                     </p>
                   </motion.div>
                 </div>
 
-                {/* Grid a 2 columnas */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-white/10">
+                {/* 2-Column Responsive Grid with Subtle Dividers */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start border-t border-white/10 pt-16 md:pt-24">
                   
-                  {/* Columna 1: Canales Directos */}
-                  <div className="space-y-8">
-                    <h3 className="text-2xl font-serif font-bold text-[#C5A059]">Canales Directos</h3>
+                  {/* Column 1: Direct Channels */}
+                  <div className="space-y-12">
+                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#C5A059] tracking-tight">Canales Directos</h3>
                     
-                    <div className="flex items-start gap-4">
-                      <Phone className="text-[#C5A059] shrink-0 mt-1" size={24} />
-                      <div>
-                        <p className="font-bold text-white text-lg font-sans">Teléfono y WhatsApp</p>
-                        <a href="https://api.whatsapp.com/send?phone=%2B523122251010" target="_blank" rel="noopener noreferrer" className="text-white text-lg hover:text-[#C5A059] transition-colors no-underline block mt-1 font-sans">
+                    <div className="flex items-start gap-6 group">
+                      <div className="bg-white/5 p-4 rounded-2xl group-hover:bg-[#C5A059]/10 transition-colors">
+                        <Phone className="text-[#C5A059] shrink-0" size={28} strokeWidth={1.5} />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <p className="font-bold text-xl tracking-tight text-white/90">Teléfono y WhatsApp</p>
+                        <a 
+                          href="https://api.whatsapp.com/send?phone=%2B523122251010" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-white hover:text-[#C5A059] transition-all no-underline text-lg font-sans font-medium mt-1 inline-block"
+                        >
                             +52 312 225 1010
                         </a>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                      <MapPin className="text-[#C5A059] shrink-0 mt-1" size={24} />
-                      <div>
-                        <p className="font-bold text-white text-lg font-sans">Despacho</p>
-                        <a href="https://maps.app.goo.gl/KAQQRcT8i2HFGXWb6" target="_blank" rel="noopener noreferrer" className="text-white text-lg hover:text-[#C5A059] transition-colors no-underline block mt-1 leading-relaxed font-sans">
+                    <div className="flex items-start gap-6 group">
+                      <div className="bg-white/5 p-4 rounded-2xl group-hover:bg-[#C5A059]/10 transition-colors">
+                        <MapPin className="text-[#C5A059] shrink-0" size={28} strokeWidth={1.5} />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <p className="font-bold text-xl tracking-tight text-white/90">Ubicación del Despacho</p>
+                        <a 
+                          href="https://maps.app.goo.gl/KAQQRcT8i2HFGXWb6" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-white hover:text-[#C5A059] transition-all no-underline text-lg font-sans font-medium mt-1 leading-relaxed inline-block"
+                        >
                           Av. San Fernando #533, Int. 12,<br />Plaza Roma, Colima.
                         </a>
                       </div>
                     </div>
                   </div>
 
-                  {/* Columna 2: Pago de Asesoría */}
-                  <div className="space-y-8">
-                    <h3 className="text-2xl font-serif font-bold text-[#C5A059]">Pago de Asesoría</h3>
+                  {/* Column 2: Payment & Security Card */}
+                  <div className="space-y-12">
+                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#C5A059] tracking-tight">Pago de Asesoría</h3>
                     
-                    <div className="space-y-4 text-white font-sans text-lg">
-                      <p><span className="font-bold text-[#C5A059]">Titular:</span> Alma Liset Encarnacion Anaya</p>
-                      <p><span className="font-bold text-[#C5A059]">Costo Inicial:</span> $700.00 MXN</p>
+                    <div className="space-y-6 text-white/90 text-lg font-sans font-medium">
+                      <p className="flex justify-between items-center pb-3 border-b border-white/5">
+                        <span className="text-[#C5A059]/60 uppercase text-xs font-black tracking-widest">Titular</span> 
+                        Alma Liset Encarnacion Anaya
+                      </p>
+                      <p className="flex justify-between items-center pb-3 border-b border-white/5">
+                        <span className="text-[#C5A059]/60 uppercase text-xs font-black tracking-widest">Costo Inicial</span> 
+                        $700.00 MXN
+                      </p>
                       
-                      <div className="pt-4">
-                        <p className="font-bold text-[#C5A059] mb-3 uppercase text-sm tracking-widest">Cuenta de Débito (BBVA)</p>
-                        {/* Tarjeta de copiado de alta visibilidad */}
-                        <div className="flex items-center justify-between bg-white/10 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
-                          <code className="font-mono tracking-widest text-xl font-bold text-white">{accountNumber}</code>
+                      <div className="pt-6">
+                        <p className="font-bold text-[#C5A059] mb-4 flex items-center gap-2">
+                          <Check size={18} className="text-[#C5A059]" strokeWidth={3} />
+                          Cuenta de Débito (BBVA)
+                        </p>
+                        {/* High-Contrast Luxury Card with HeroUI Button */}
+                        <div className="flex items-center justify-between bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl group hover:border-[#C5A059]/30 transition-all shadow-xl shadow-black/20">
+                          <code className="font-mono tracking-[0.2em] text-xl font-black text-white">{accountNumber}</code>
                           <Button 
                             isIconOnly
-                            className="bg-[#C5A059]/20 text-[#C5A059] hover:bg-[#C5A059] hover:text-white transition-all rounded-lg ml-4"
-                            aria-label="Copiar número de cuenta"
+                            variant="flat"
+                            radius="lg"
                             onPress={handleCopy}
+                            className="bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059] hover:text-white transition-all w-12 h-12 min-w-12 shadow-inner"
+                            aria-label="Copiar número de cuenta"
                           >
-                            {copied ? <Check size={20} className="text-green-400" /> : <Copy size={20} />}
+                            {copied ? <Check size={24} className="text-green-400" /> : <Copy size={24} />}
                           </Button>
                         </div>
                       </div>
@@ -90,13 +114,15 @@ const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Nota Importante */}
-                <div className="pt-10 border-t border-white/10">
-                  <p className="text-white/60 text-sm italic text-center max-w-3xl mx-auto font-sans leading-relaxed">
+                {/* Important Note: Positioned to avoid floating button overlap */}
+                <div className="pt-20 border-t border-white/10 pb-32">
+                  <p className="text-sm text-white/40 font-sans font-medium italic text-center max-w-3xl mx-auto leading-relaxed">
                     *Nota Importante: Para acudir al despacho es con previa cita y con el comprobante de pago enviado vía WhatsApp.
                   </p>
                 </div>
             </div>
+            {/* Massive bottom whitespace for Floating Button security */}
+            <div className="h-24"></div>
         </section>
     );
 };

@@ -1,112 +1,150 @@
 "use client";
 
-import React from "react";
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Button } from "@heroui/react";
-import { motion } from "framer-motion";
-import { ArrowRight, Scale } from "lucide-react";
+import { ArrowRight, Scale, ShieldCheck } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
-    // Animación suave del contenedor
-    const containerVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, staggerChildren: 0.2 }
-        }
-    };
-
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+        visible: { opacity: 1, y: 0 }
     };
 
     return (
-        <section className="relative w-full min-h-screen flex items-center justify-center p-4 bg-[#F5F5F7] overflow-hidden font-sans">
-
-            {/* --- 1. IMAGEN DE FONDO --- */}
-            <div className="absolute inset-2 md:inset-6 z-0 rounded-[2rem] overflow-hidden shadow-2xl bg-neutral-900">
-                <img
-                    src="/images/oficina-legal.png"
-                    alt="Fondo Legal"
-                    className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-50">
+            {/* Ambient Background Elements */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#C5A059]/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#062C30]/5 rounded-full blur-[100px]" />
             </div>
 
-            {/* --- 2. TARJETA PRINCIPAL --- */}
-            <div className="relative z-10 w-full flex justify-center lg:justify-start lg:px-20">
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    style={{
-                        backgroundColor: "rgba(255, 255, 255, 0.94)",
-                        backdropFilter: "blur(24px)",
-                        WebkitBackdropFilter: "blur(24px)",
-                        boxShadow: "0 40px 60px -15px rgba(0, 0, 0, 0.2)",
-                        padding: "clamp(2.5rem, 5vw, 5rem)",
-                        border: "none",
-                    }}
-                    className="w-full max-w-3xl rounded-[2.5rem] flex flex-col gap-8 md:gap-10 text-center md:text-left mx-auto md:mx-0"
-                >
-
-                    {/* Badge / Etiqueta */}
-                    <motion.div variants={itemVariants} className="w-full flex justify-center md:justify-start">
-                        <div
-                            className="inline-flex items-center gap-3 px-4 py-2 rounded-full"
-                            style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                    
+                    {/* Content Column */}
+                    <motion.div 
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ staggerChildren: 0.2 }}
+                        className="w-full lg:w-6/12 flex flex-col items-center lg:items-start text-center lg:text-left"
+                    >
+                        {/* Premium Badge */}
+                        <motion.div 
+                            variants={itemVariants}
+                            className="inline-flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-100 mb-8"
                         >
-                            <Scale size={14} className="text-[#C5A059]" />
-                            <span className="text-[#062C30] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
-                                Firma Legal Colima
+                            <div className="relative w-5 h-5">
+                                <Image 
+                                    src="/images/logo.png" 
+                                    alt="Icono" 
+                                    width={20}
+                                    height={20}
+                                    className="object-contain"
+                                />
+                            </div>
+                            <span className="text-[#062C30] text-[10px] md:text-xs font-black tracking-[0.2em] uppercase">
+                                Asesoría Legal Especializada
                             </span>
-                        </div>
+                            <div className="w-1 h-1 bg-slate-200 rounded-full" />
+                            <span className="text-slate-400 text-[10px] md:text-xs font-bold uppercase">
+                                Colima
+                            </span>
+                        </motion.div>
+
+                        <motion.h1 
+                            variants={itemVariants}
+                            className="text-5xl md:text-7xl font-serif font-bold text-[#062C30] mb-8 leading-[1.1] tracking-tight"
+                        >
+                            Excelencia Jurídica <span className="font-sans text-[#C5A059]">&</span> <br />
+                            <span className="text-[#C5A059]">Compromiso Ético</span>
+                        </motion.h1>
+
+                        <motion.p 
+                            variants={itemVariants}
+                            className="text-lg md:text-xl text-slate-600 font-sans font-medium mb-12 max-w-xl leading-relaxed"
+                        >
+                            Especialistas en derecho Civil, Familiar y Mercantil. Brindamos asesoría jurídica integral con un enfoque profesional y resultados sólidos.
+                        </motion.p>
+
+                        <motion.div 
+                            variants={itemVariants}
+                            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto items-center justify-center lg:justify-start"
+                        >
+                            <Button
+                                size="lg"
+                                radius="md"
+                                variant="shadow"
+                                onPress={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="bg-[#C5A059] text-white font-bold h-16 w-full sm:px-10 shadow-xl shadow-[#C5A059]/30 hover:scale-[1.02] active:scale-95 transition-all text-base tracking-wide"
+                            >
+                                Agendar Consulta
+                            </Button>
+                            
+                            <Button
+                                size="lg"
+                                radius="md"
+                                variant="bordered"
+                                onPress={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="border-slate-200 text-[#062C30] font-bold h-16 w-full sm:px-10 hover:bg-slate-50 transition-all text-base tracking-wide bg-white sm:bg-transparent"
+                                endContent={<ArrowRight className="w-5 h-5 ml-1" />}
+                            >
+                                Nuestros Servicios
+                            </Button>
+                        </motion.div>
+
+                        {/* Trust Indicator */}
+                        <motion.div 
+                            variants={itemVariants}
+                            className="mt-16 flex items-center gap-4 text-slate-400 font-sans font-bold text-xs uppercase tracking-widest"
+                        >
+                            <div className="h-[1px] w-12 bg-slate-200" />
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck size={18} className="text-[#C5A059]" />
+                                Representación Ética y Confiable
+                            </div>
+                        </motion.div>
                     </motion.div>
 
-                    {/* Título Principal */}
-                    <motion.h1
-                        variants={itemVariants}
-                        className="text-4xl md:text-6xl font-serif text-[#062C30] leading-[1.15]"
-                    >
-                        Justicia con <br className="hidden md:block"/>
-                        <span className="italic text-[#C5A059] font-serif">excelencia.</span>
-                    </motion.h1>
-
-                    {/* Texto descriptivo */}
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-base md:text-lg text-gray-600 font-normal leading-relaxed max-w-lg mx-auto md:mx-0"
-                    >
-                        Estrategias jurídicas sólidas para proteger su patrimonio.
-                        Representación experta donde cada detalle cuenta.
-                    </motion.p>
-
-                    {/* Botones */}
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full pt-2">
-                        <Button
-                            size="lg"
-                            style={{ background: '#C5A059', color: '#ffffff', border: 'none', fontWeight: 500 }}
-                            className="w-full sm:w-auto px-8 py-6 rounded-xl shadow-lg hover:opacity-90"
-                            onPress={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                    {/* Image Column - Decorative Elements */}
+                    <div className="hidden lg:block w-6/12 relative h-[600px]">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            className="absolute inset-0 bg-gradient-to-br from-[#062C30] to-[#0a4d54] rounded-[3rem] shadow-2xl overflow-hidden"
                         >
-                            Agendar Cita
-                        </Button>
-
-                        <Button
-                            size="lg"
-                            variant="light"
-                            style={{ color: '#062C30', border: 'none', fontWeight: 500 }}
-                            className="w-full sm:w-auto px-6 py-6 rounded-xl hover:bg-gray-100"
-                            endContent={<ArrowRight className="w-4 h-4" />}
-                            onPress={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                            {/* Decorative architectural abstraction */}
+                            <div className="absolute inset-0 opacity-20 bg-[url('/images/oficina-legal.png')] bg-cover bg-center grayscale contrast-125 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#062C30] via-transparent to-transparent" />
+                            
+                            <div className="absolute bottom-12 left-12 right-12">
+                                <p className="text-[#C5A059] font-black text-xs uppercase tracking-[0.3em] mb-3">Compromiso Legal</p>
+                                <h3 className="text-white text-3xl font-serif font-bold leading-tight">Soluciones Jurídicas de Alta Fidelidad</h3>
+                            </div>
+                        </motion.div>
+                        
+                        {/* Floating Floating Detail */}
+                        <motion.div 
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl border border-slate-50 max-w-[200px]"
                         >
-                            Nuestros Servicios
-                        </Button>
-                    </motion.div>
-
-                </motion.div>
+                            <div className="w-12 h-12 flex items-center justify-center mb-4 overflow-hidden">
+                                <Image 
+                                    src="/images/logo.png" 
+                                    alt="Logo Especialidad" 
+                                    width={40} 
+                                    height={40}
+                                    className="object-contain"
+                                />
+                            </div>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Especialidad</p>
+                            <p className="text-sm font-bold text-[#062C30] leading-snug">Derecho Familiar y Sucesiones</p>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

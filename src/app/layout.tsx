@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
-import { HeroUIProvider } from "@heroui/react";
+import { Providers } from "@/components/Providers";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -121,10 +121,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${playfair.variable} ${lato.variable} font-sans bg-gray-50 text-[#1F2937]`}>
-        <HeroUIProvider>
+        <Providers>
           {children}
           <FloatingChatButton />
-        </HeroUIProvider>
+        </Providers>
       </body>
     </html>
   );

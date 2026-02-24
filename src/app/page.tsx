@@ -9,17 +9,10 @@ import AboutSection from "@/components/ui/AboutSection";
 import ContactSection from "@/components/ui/ContactSection";
 import FooterSection from "@/components/ui/FooterSection";
 
-// Importación de iconos
-import {
-    HeartCrack, Baby, ScrollText, HeartHandshake, Banknote,
-    FileSignature, ShieldAlert, Fingerprint, CalendarClock
-} from "lucide-react";
-
 // SEO: Metadatos específicos para la página de inicio
 export const metadata: Metadata = {
   title: "Abogados en Colima | Asesoría Legal Familiar, Civil y Mercantil - Alma Liset",
   description: "Despacho legal en Colima: Divorcios, Pensiones Alimenticias, Testamentos, Contratos y más. Abogadas expertas en derecho Familiar, Civil y Mercantil. ¡Protegemos tus derechos!",
-  // El resto de los metadatos (openGraph, twitter) se heredan del layout.tsx
 };
 
 export default function Home() {
@@ -36,15 +29,26 @@ export default function Home() {
     ];
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen bg-slate-50">
             <Navbar />
-            <main className="pb-40">
+            <main className="flex-1">
+                {/* Hero Section */}
                 <HeroSection />
+
+                {/* Massive Spacing between Hero and Services */}
+                <div className="h-24 md:h-48 bg-slate-50" />
+
                 <ServicesSection services={servicesData} />
+
+                {/* Massive Spacing between Services and About */}
+                <div className="h-24 md:h-48 bg-white" />
+
                 <AboutSection />
+
+                {/* Contact Section starts with its own top radius and margin */}
                 <ContactSection />
             </main>
             <FooterSection />
-        </>
+        </div>
     );
 }
