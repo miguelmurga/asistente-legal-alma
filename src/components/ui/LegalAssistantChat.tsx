@@ -292,28 +292,28 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
         <div ref={messagesEndRef} className="h-10" />
       </div>
 
-      {/* Input Section - Capsule Design */}
-      <div className="p-6 md:p-8 bg-white border-t border-slate-100 shrink-0">
-        <form onSubmit={handleSend} className="flex items-center max-w-4xl mx-auto bg-slate-50 border border-slate-100 rounded-3xl p-1.5 focus-within:ring-4 focus-within:ring-[#C5A059]/10 transition-all shadow-inner">
+      {/* Input Section - Compact Capsule Design */}
+      <div className="p-4 md:p-6 bg-white border-t border-slate-100 shrink-0">
+        <form onSubmit={handleSend} className="flex items-center max-w-3xl mx-auto bg-slate-50 border border-slate-100 rounded-2xl p-1 focus-within:ring-4 focus-within:ring-[#C5A059]/5 transition-all shadow-inner">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="¿Qué duda legal tienes hoy?"
             disabled={isLoading || !!connectionError}
-            className="flex-1 bg-transparent outline-none px-6 py-4 text-[#062C30] font-sans font-medium placeholder:text-slate-300 disabled:opacity-50"
+            className="flex-1 bg-transparent outline-none px-5 py-2.5 text-[#062C30] font-sans text-sm font-medium placeholder:text-slate-300 disabled:opacity-50"
           />
           <Button
             type="submit"
             isIconOnly
-            radius="2xl"
+            radius="xl"
             disabled={isLoading || !input.trim() || !!connectionError}
-            className="bg-[#062C30] text-[#C5A059] h-14 w-14 shadow-xl shadow-[#062C30]/20 hover:scale-105 active:scale-95 transition-all"
+            className="bg-[#062C30] text-[#C5A059] h-10 w-10 shadow-lg shadow-[#062C30]/10 hover:scale-105 active:scale-95 transition-all"
           >
-            {isLoading ? <Loader2 className="w-6 h-6 animate-spin" /> : <Send size={24} strokeWidth={2.5} />}
+            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send size={18} strokeWidth={2.5} />}
           </Button>
         </form>
-        <p className="text-[10px] text-center text-slate-300 mt-6 uppercase font-black tracking-[0.3em]">
+        <p className="text-[9px] text-center text-slate-300 mt-4 uppercase font-black tracking-[0.3em]">
           ASESORÍA LEGAL COLIMA • CONFIDENCIAL Y SEGURA
         </p>
       </div>
