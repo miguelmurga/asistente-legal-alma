@@ -306,7 +306,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
           <Button
             type="submit"
             isIconOnly
-            radius="xl"
+            radius="full"
             disabled={isLoading || !input.trim() || !!connectionError}
             className="bg-[#062C30] text-[#C5A059] h-10 w-10 shadow-lg shadow-[#062C30]/10 hover:scale-105 active:scale-95 transition-all"
           >
