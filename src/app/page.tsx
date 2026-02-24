@@ -38,7 +38,7 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <main className="pb-32">
+            <main className="pb-40">
                 <HeroSection />
                 <ServicesSection services={servicesData} />
                 <AboutSection />
