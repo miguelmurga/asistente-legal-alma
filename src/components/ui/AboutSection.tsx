@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Download } from 'lucide-react';
-import { Button } from "@heroui/react";
 
 const AboutSection: React.FC = () => {
     return (
@@ -47,11 +46,11 @@ const AboutSection: React.FC = () => {
                             Lic. Alma Liset Encarnación Anaya
                         </h2>
 
-                        <p className="text-lg text-[#1F2937]/80 leading-relaxed mb-8 font-medium">
+                        <p className="text-lg text-[#1F2937]/80 leading-relaxed mb-8 font-sans">
                             Con una sólida trayectoria, la Lic. Alma Liset se especializa en materia familiar, civil y mercantil, ofreciendo una representación legal experta, ética y personalizada. Su misión es proteger el patrimonio y la tranquilidad de sus clientes a través de estrategias jurídicas sólidas.
                         </p>
 
-                        <ul className="space-y-5">
+                        <ul className="space-y-5 mb-12">
                             {[
                                 "Atención 100% personalizada y empática",
                                 "Estrategias legales claras y transparentes",
@@ -59,7 +58,7 @@ const AboutSection: React.FC = () => {
                             ].map((item, index) => (
                                 <li key={index} className="flex items-center">
                                     <CheckCircle2 className="text-[#C5A059] w-6 h-6 mr-4 flex-shrink-0" />
-                                    <span className="text-lg text-[#1F2937] font-medium">{item}</span>
+                                    <span className="text-lg text-[#1F2937] font-sans">{item}</span>
                                  </li>
                             ))}
                         </ul>
@@ -70,28 +69,25 @@ const AboutSection: React.FC = () => {
                                 Información Profesional y Cédula
                             </h3>
                             
-                            <div className="space-y-2 mb-8 text-lg font-light text-[#1F2937]/90">
-                                <p><span className="font-medium text-[#062C30]">Cédula Profesional:</span> 11236067</p>
-                                <p><span className="font-medium text-[#062C30]">Profesión:</span> Licenciatura en Derecho</p>
+                            <div className="space-y-3 mb-10 text-lg font-sans text-[#1F2937]/90">
+                                <p><span className="font-bold text-[#062C30]">Cédula Profesional:</span> 11236067</p>
+                                <p><span className="font-bold text-[#062C30]">Profesión:</span> Licenciatura en Derecho</p>
                             </div>
                             
-                            <Button
-                                as="a"
-                                href="/CONSTANCIA_ALMA LISET ENCARNACION.pdf"
+                            <a 
+                                href="/CONSTANCIA_ALMA LISET ENCARNACION.pdf" 
                                 download="Cedula_Profesional_Alma_Liset_Encarnacion.pdf"
-                                className="bg-[#C5A059] text-white font-medium px-6 py-6 rounded-md flex items-center gap-3 hover:bg-[#b08d4a] transition-all shadow-md no-underline w-fit"
-                                startContent={<Download size={20} />}
-                            >
-                                Descargar Cédula Profesional
-                            </Button>
+                                className="inline-flex items-center gap-2 bg-[#C5A059] text-white px-8 py-4 rounded-md font-sans no-underline shadow-md hover:bg-[#b08d4a] transition-all transform hover:scale-[1.02] active:scale-95"
+                            > 
+                                <Download size={20} />
+                                Descargar Cédula Profesional 
+                            </a>
                         </div>
 
                     </motion.div>
 
                 </div>
             </div>
-            {/* Espaciador para separar de la siguiente sección */}
-            <div className="h-24 md:h-32"></div>
         </section>
     );
 };
