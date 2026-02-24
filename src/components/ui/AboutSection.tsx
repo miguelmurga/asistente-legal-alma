@@ -39,14 +39,14 @@ const AboutSection: React.FC = () => {
                         transition={{ duration: 0.9, ease: "easeOut" }}
                         className="w-full lg:w-7/12"
                     >
-                        <p className="text-base font-bold text-accent uppercase tracking-widest mb-4">
+                        <p className="text-base font-bold text-[#C5A059] uppercase tracking-widest mb-4">
                             Sobre el Despacho
                         </p>
-                        <h2 id="about-heading" className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
+                        <h2 id="about-heading" className="text-4xl md:text-5xl font-serif font-bold text-[#062C30] mb-6">
                             Lic. Alma Liset Encarnación Anaya
                         </h2>
 
-                        <p className="text-lg text-dark-text/80 leading-relaxed mb-8">
+                        <p className="text-lg text-[#1F2937]/80 leading-relaxed mb-8">
                             Con una sólida trayectoria, la Lic. Alma Liset se especializa en materia familiar, civil y mercantil, ofreciendo una representación legal experta, ética y personalizada. Su misión es proteger el patrimonio y la tranquilidad de sus clientes a través de estrategias jurídicas sólidas.
                         </p>
 
@@ -57,22 +57,22 @@ const AboutSection: React.FC = () => {
                                 "Defensa tenaz de sus intereses y derechos"
                             ].map((item, index) => (
                                 <li key={index} className="flex items-center">
-                                    <CheckCircle2 className="text-accent w-6 h-6 mr-4 flex-shrink-0" />
-                                    <span className="text-lg text-dark-text">{item}</span>
+                                    <CheckCircle2 className="text-[#C5A059] w-6 h-6 mr-4 flex-shrink-0" />
+                                    <span className="text-lg text-[#1F2937]">{item}</span>
                                  </li>
                             ))}
                         </ul>
 
                         {/* Professional Information */}
                         <div className="mt-12 pt-8 border-t border-gray-200">
-                            <h3 className="text-2xl font-serif font-bold text-primary mb-6">Información Profesional y Cédula</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-dark-text/90">
+                            <h3 className="text-2xl font-serif font-bold text-[#062C30] mb-6">Información Profesional y Cédula</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-[#1F2937]/90">
                                 <div className="flex flex-col">
-                                    <span className="font-semibold text-primary">Cédula Profesional:</span>
+                                    <span className="font-semibold text-[#062C30]">Cédula Profesional:</span>
                                     <span>11236067</span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="font-semibold text-primary">Profesión:</span>
+                                    <span className="font-semibold text-[#062C30]">Profesión:</span>
                                     <span>Licenciatura en Derecho</span>
                                 </div>
                                 <div className="flex flex-col">
@@ -81,13 +81,14 @@ const AboutSection: React.FC = () => {
                             <a
                                 href="/CONSTANCIA_ALMA LISET ENCARNACION.pdf"
                                 download="Cedula_Profesional_Alma_Liset_Encarnacion.pdf"
-                                className="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent hover:bg-accent/90 transition-colors duration-300 group"
+                                className="mt-8 inline-flex items-center justify-center px-6 py-3 rounded-md transition-colors duration-300 group"
+                                style={{ background: '#C5A059', color: '#ffffff', textDecoration: 'none', border: 'none', fontWeight: 500 }}
                             >
                                 <DownloadCloud className="w-5 h-5 mr-3 -ml-1" />
                                 Descargar Cédula Profesional
                             </a>
                         </div>
-                        
+
                     </motion.div>
 
                 </div>

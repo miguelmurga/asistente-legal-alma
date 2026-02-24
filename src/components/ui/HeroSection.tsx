@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             </div>
 
-            {/* --- 2. TARJETA PRINCIPAL (El cambio clave está aquí) --- */}
+            {/* --- 2. TARJETA PRINCIPAL --- */}
             <div className="relative z-10 w-full flex justify-center lg:justify-start lg:px-20">
 
                 <motion.div
@@ -46,16 +46,18 @@ const HeroSection: React.FC = () => {
                         backdropFilter: "blur(24px)",
                         WebkitBackdropFilter: "blur(24px)",
                         boxShadow: "0 40px 60px -15px rgba(0, 0, 0, 0.2)",
-                        // --- SOLUCIÓN DEFINITIVA: Padding forzado por estilo ---
-                        padding: "clamp(2.5rem, 5vw, 5rem)", // Mínimo 40px, Máximo 80px
+                        padding: "clamp(2.5rem, 5vw, 5rem)",
+                        border: "none",
                     }}
-                    // Clases de Tailwind para estructura (Width, Border, Flex)
-                    className="w-full max-w-3xl rounded-[2.5rem] border border-white/60 flex flex-col gap-8 md:gap-10 text-center md:text-left mx-auto md:mx-0"
+                    className="w-full max-w-3xl rounded-[2.5rem] flex flex-col gap-8 md:gap-10 text-center md:text-left mx-auto md:mx-0"
                 >
 
                     {/* Badge / Etiqueta */}
                     <motion.div variants={itemVariants} className="w-full flex justify-center md:justify-start">
-                        <div className="inline-flex items-center gap-3 bg-slate-100 px-4 py-2 rounded-full border border-slate-200">
+                        <div
+                            className="inline-flex items-center gap-3 px-4 py-2 rounded-full"
+                            style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
+                        >
                             <Scale size={14} className="text-[#C5A059]" />
                             <span className="text-[#062C30] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
                                 Firma Legal Colima
@@ -85,7 +87,8 @@ const HeroSection: React.FC = () => {
                     <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full pt-2">
                         <Button
                             size="lg"
-                            className="w-full sm:w-auto bg-[#C5A059] text-white font-medium px-8 py-6 rounded-xl shadow-lg hover:bg-[#b08d4b]"
+                            style={{ background: '#C5A059', color: '#ffffff', border: 'none', fontWeight: 500 }}
+                            className="w-full sm:w-auto px-8 py-6 rounded-xl shadow-lg hover:opacity-90"
                             onPress={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                         >
                             Agendar Cita
@@ -94,8 +97,10 @@ const HeroSection: React.FC = () => {
                         <Button
                             size="lg"
                             variant="light"
-                            className="w-full sm:w-auto text-[#062C30] font-medium px-6 py-6 rounded-xl hover:bg-gray-100"
+                            style={{ color: '#062C30', border: 'none', fontWeight: 500 }}
+                            className="w-full sm:w-auto px-6 py-6 rounded-xl hover:bg-gray-100"
                             endContent={<ArrowRight className="w-4 h-4" />}
+                            onPress={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
                         >
                             Nuestros Servicios
                         </Button>

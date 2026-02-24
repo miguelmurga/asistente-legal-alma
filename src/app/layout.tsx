@@ -103,6 +103,8 @@ const jsonLd = {
 };
 
 
+import FloatingChatButton from "@/components/ui/FloatingChatButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -117,8 +119,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${playfair.variable} ${lato.variable} font-sans bg-gray-50 text-dark-text`}>
+      <body className={`${playfair.variable} ${lato.variable} font-sans bg-gray-50 text-[#1F2937]`}>
         {children}
+        <FloatingChatButton />
       </body>
     </html>
   );

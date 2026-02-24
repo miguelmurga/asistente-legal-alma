@@ -11,29 +11,29 @@ const FooterSection: React.FC = () => {
     ];
 
     return (
-        <footer className="bg-primary border-t-4 border-accent">
+        <footer className="bg-[#062C30] border-t-4 border-[#C5A059]">
             <div className="container mx-auto px-6 sm:px-8 py-16">
                 <div className="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-12 lg:gap-8">
 
                     {/* Branding */}
                     <div className="flex flex-col items-center lg:items-start gap-4">
-                        <Link href="/" className="flex items-center gap-3 group">
-                             <div className="p-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+                        <Link href="/" className="flex items-center gap-3 group no-underline">
+                             <div className="p-1.5 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 text-[#C5A059] group-hover:bg-[#C5A059]/20 transition-colors">
                                 <Scale size={22} strokeWidth={1.5} />
                             </div>
                             <div className="flex flex-col leading-tight">
                                 <p className="font-serif font-bold text-xl text-white tracking-wide">
                                     Alma Liset Encarnacion
                                 </p>
-                                <p className="font-sans text-xs text-light-text/70 uppercase tracking-[0.2em] font-medium">
+                                <p className="font-sans text-xs text-[#F3F4F6]/70 uppercase tracking-[0.2em] font-medium">
                                     Asesoría Legal
                                 </p>
                             </div>
                         </Link>
                     </div>
-                    
+
                     {/* Copyright */}
-                    <div className="text-sm text-light-text/60 order-last lg:order-none">
+                    <div className="text-sm text-[#F3F4F6]/60 order-last lg:order-none">
                         &copy; {new Date().getFullYear()} Alma Liset Encarnacion. Todos los derechos reservados.
                     </div>
 
@@ -44,7 +44,7 @@ const FooterSection: React.FC = () => {
                                 key={social.name}
                                 href={social.href}
                                 aria-label={social.name}
-                                className="text-light-text/70 hover:text-accent hover:scale-110 transition-all duration-300"
+                                className="text-[#F3F4F6]/70 hover:text-[#C5A059] hover:scale-110 transition-all duration-300 no-underline"
                             >
                                 <social.icon size={24} strokeWidth={1.5} />
                             </a>

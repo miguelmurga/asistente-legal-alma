@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { 
-    ArrowRight, HeartCrack, Baby, ScrollText, HeartHandshake, 
-    Banknote, FileSignature, ShieldAlert, Fingerprint, CalendarClock, Icon as LucideIcon 
+import {
+    ArrowRight, HeartCrack, Baby, ScrollText, HeartHandshake,
+    Banknote, FileSignature, ShieldAlert, Fingerprint, CalendarClock, Icon as LucideIcon
 } from 'lucide-react';
 
 // Mapa para resolver los nombres de los iconos a sus componentes
@@ -43,22 +43,22 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
     };
 
     return (
-        <section className="py-24 sm:py-32 bg-light" id="servicios" aria-labelledby="services-heading">
+        <section className="py-24 sm:py-32 bg-[#F5F5F7]" id="servicios" aria-labelledby="services-heading">
             <div className="container mx-auto px-6">
 
                 {/* Encabezado de la Sección */}
                 <div className="text-center mb-16 md:mb-20">
-                    <h2 id="services-heading" className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+                    <h2 id="services-heading" className="text-4xl md:text-5xl font-serif font-bold text-[#062C30] mb-4">
                         Áreas de Práctica
                     </h2>
-                    <p className="text-lg text-dark-text/70 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg text-[#1F2937]/70 max-w-2xl mx-auto leading-relaxed">
                         Soluciones jurídicas integrales para proteger lo que más importa.
                     </p>
-                    <div className="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
+                    <div className="w-24 h-1 bg-[#C5A059] mx-auto mt-6 rounded-full"></div>
                 </div>
 
                 {/* Grid de Servicios como Lista Semántica */}
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <ul className="list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" style={{ paddingLeft: 0, margin: 0 }}>
                     {services.map((service) => {
                         const IconComponent = iconMap[service.icon];
                         return (
@@ -72,27 +72,27 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
                                     group bg-white rounded-2xl p-8
                                     border border-transparent
                                     transition-all duration-300 ease-in-out
-                                    hover:shadow-2xl hover:-translate-y-2 hover:border-accent/30
+                                    hover:shadow-2xl hover:-translate-y-2 hover:border-[#C5A059]/30
                                 "
                             >
                                 {/* Icono (Decorativo) */}
-                                <div className="mb-6 inline-block p-4 rounded-xl bg-accent/10">
+                                <div className="mb-6 inline-block p-4 rounded-xl bg-[#C5A059]/10">
                                     {IconComponent && (
                                         <IconComponent
                                             aria-hidden="true"
-                                            className="w-10 h-10 text-accent"
+                                            className="w-10 h-10 text-[#C5A059]"
                                             strokeWidth={1.5}
                                         />
                                     )}
                                 </div>
 
                                 {/* Título */}
-                                <h3 className="text-2xl font-bold font-serif text-primary mb-4">
+                                <h3 className="text-2xl font-bold font-serif text-[#062C30] mb-4">
                                     {service.title}
                                 </h3>
 
                                 {/* Descripción */}
-                                <p className="text-base text-dark-text/80 leading-relaxed">
+                                <p className="text-base text-[#1F2937]/80 leading-relaxed">
                                     {service.description}
                                 </p>
                             </motion.li>
@@ -104,7 +104,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
                 <div className="mt-20 text-center">
                     <a
                         href="#contacto"
-                        className="text-lg inline-flex items-center text-primary font-semibold hover:text-accent group transition-colors duration-300"
+                        className="text-lg inline-flex items-center text-[#062C30] font-semibold hover:text-[#C5A059] group transition-colors duration-300 no-underline"
                     >
                         <span>Consultar mi caso</span>
                         <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

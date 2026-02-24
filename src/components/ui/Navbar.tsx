@@ -18,10 +18,11 @@ import { Scale } from "lucide-react";
  */
 export default function Navbar() {
     const menuItems = [
-        { name: "Inicio", href: "#" },
-        { name: "Áreas de Práctica", href: "#servicios" },
-        { name: "La Firma", href: "#perfil" },
-        { name: "Casos de Éxito", href: "#casos" },
+        { name: "Inicio", href: "/" },
+        { name: "Asistente Virtual", href: "/asistente" },
+        { name: "Áreas de Práctica", href: "/#servicios" },
+        { name: "La Firma", href: "/#perfil" },
+        { name: "Casos de Éxito", href: "/#casos" },
     ];
 
     return (
