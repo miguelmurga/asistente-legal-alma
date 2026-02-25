@@ -29,7 +29,7 @@ export default function Home() {
     ];
 
     return (
-        <div className="flex flex-col min-h-screen bg-slate-50">
+        <div className="flex flex-col min-h-screen bg-slate-50 pb-32 md:pb-40">
             <Navbar />
             <main className="flex-1">
                 {/* Hero Section */}

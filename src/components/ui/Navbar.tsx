@@ -43,14 +43,19 @@ export default function Navbar() {
             height="5rem"
             className={`fixed top-0 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-slate-200/50 border-b border-slate-100' : 'bg-transparent'}`}
         >
-            <NavbarContent>
+            {/* Mobile: Toggle on the left */}
+            <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                    className="sm:hidden text-[#062C30]"
+                    className="text-[#062C30]"
                 />
+            </NavbarContent>
+
+            {/* Logo/Brand: Centered on mobile, Start on desktop */}
+            <NavbarContent justify="center" className="sm:justify-start">
                 <NavbarBrand>
-                    <Link href="/" className="flex items-center gap-3 group no-underline">
-                        <div className="relative w-12 h-12 flex items-center justify-center">
+                    <Link href="/" className="flex items-center gap-2 sm:gap-3 group no-underline">
+                        <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
                             <Image 
                                 src="/images/logo.png" 
                                 alt="Logo Alma Encarnación & Asociados" 
@@ -59,11 +64,11 @@ export default function Navbar() {
                                 className="object-contain"
                             />
                         </div>
-                        <div className="flex flex-col leading-tight max-w-[180px] sm:max-w-none">
-                            <span className="font-serif font-bold text-base sm:text-xl text-[#062C30] truncate sm:whitespace-normal">
-                                Alma Encarnación <span className="font-sans text-[#C5A059]">&</span> Asociados
+                        <div className="flex flex-col leading-tight">
+                            <span className="font-serif font-bold text-base sm:text-xl text-[#062C30] whitespace-nowrap">
+                                Alma Encarnación <span className="hidden md:inline font-sans text-[#C5A059]">&</span> <span className="hidden md:inline">Asociados</span>
                             </span>
-                            <span className="font-sans text-[9px] sm:text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">
+                            <span className="hidden md:block font-sans text-[9px] sm:text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">
                                 Firma Legal
                             </span>
                         </div>
