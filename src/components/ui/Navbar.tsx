@@ -66,7 +66,7 @@ export default function Navbar() {
                         </div>
                         <div className="flex flex-col leading-tight">
                             <span className="font-serif font-bold text-base sm:text-xl text-[#062C30] whitespace-nowrap">
-                                Alma Encarnación <span className="hidden md:inline font-sans text-[#C5A059]">&</span> <span className="hidden md:inline">Asociados</span>
+                                Alma Encarnación <span className="font-sans text-[#C5A059]">&</span> Asociados
                             </span>
                             <span className="hidden md:block font-sans text-[9px] sm:text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">
                                 Firma Legal
