@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Bot } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
@@ -27,7 +27,7 @@ export default function FloatingChatButton() {
         className="flex items-center gap-3 bg-[#062C30] hover:bg-[#051f23] text-white p-4 rounded-2xl shadow-2xl transition-all duration-300 group overflow-hidden no-underline"
       >
         <div className="relative">
-          <Bot className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+          <UserRound className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-[#062C30] rounded-full"></span>
         </div>
         <div className="flex flex-col items-start leading-none pr-2">

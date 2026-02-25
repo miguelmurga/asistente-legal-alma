@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, User, Bot, Loader2, AlertTriangle, Phone, Calendar, ArrowLeft, MessageSquare } from 'lucide-react';
+import { Send, User, UserRound, Loader2, AlertTriangle, Phone, Calendar, ArrowLeft, MessageSquare } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -230,7 +230,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                 <div className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg mt-1 ${
                   message.role === 'user' ? 'bg-[#062C30] text-white shadow-[#062C30]/20' : 'bg-white text-[#C5A059] shadow-slate-200'
                 }`}>
-                  {message.role === 'user' ? <User size={20} strokeWidth={2.5} /> : <Bot size={20} strokeWidth={2.5} />}
+                  {message.role === 'user' ? <User size={20} strokeWidth={2.5} /> : <UserRound size={20} strokeWidth={2.5} />}
                 </div>
 
                 {/* Bubble with Whitespace and Typography */}
