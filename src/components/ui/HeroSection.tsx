@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
                                 />
                             </div>
                             <span className="text-[#062C30] text-[10px] md:text-xs font-black tracking-[0.2em] uppercase">
-                                Icono Asesoría Legal Colima
+                                Asesoría Legal Colima
                             </span>
                         </motion.div>
 
