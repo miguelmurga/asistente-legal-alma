@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { UserRound } from 'lucide-react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
@@ -27,7 +27,15 @@ export default function FloatingChatButton() {
         className="flex items-center gap-3 bg-[#062C30] hover:bg-[#051f23] text-white p-4 rounded-2xl shadow-2xl transition-all duration-300 group overflow-hidden no-underline"
       >
         <div className="relative">
-          <UserRound className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+          <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#C5A059] bg-white group-hover:scale-110 transition-transform duration-300">
+            <Image 
+              src="/images/AlmaLiset.png" 
+              alt="Asistente Alma" 
+              width={32} 
+              height={32} 
+              className="object-cover"
+            />
+          </div>
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-[#062C30] rounded-full"></span>
         </div>
         <div className="flex flex-col items-start leading-none pr-2">

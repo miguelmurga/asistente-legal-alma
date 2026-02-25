@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, User, UserRound, Loader2, AlertTriangle, Phone, Calendar, ArrowLeft, MessageSquare } from 'lucide-react';
+import { Send, User, Loader2, AlertTriangle, Phone, Calendar, ArrowLeft, MessageSquare } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from "@heroui/react";
 
 // Usamos una ruta relativa (Next.js API Proxy) para evitar bloqueos de CORS
@@ -227,10 +228,20 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
               <div className={`flex max-w-[90%] md:max-w-[80%] gap-4 ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                 
                 {/* Avatar with Shadow */}
-                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg mt-1 ${
-                  message.role === 'user' ? 'bg-[#062C30] text-white shadow-[#062C30]/20' : 'bg-white text-[#C5A059] shadow-slate-200'
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg mt-1 overflow-hidden ${
+                  message.role === 'user' ? 'bg-[#062C30] text-white shadow-[#062C30]/20' : 'bg-white shadow-slate-200 border border-slate-100'
                 }`}>
-                  {message.role === 'user' ? <User size={20} strokeWidth={2.5} /> : <UserRound size={20} strokeWidth={2.5} />}
+                  {message.role === 'user' ? (
+                    <User size={20} strokeWidth={2.5} />
+                  ) : (
+                    <Image 
+                      src="/images/AlmaLiset.png" 
+                      alt="Lic. Alma Liset" 
+                      width={48} 
+                      height={48} 
+                      className="object-cover w-full h-full"
+                    />
+                  )}
                 </div>
 
                 {/* Bubble with Whitespace and Typography */}
