@@ -29,7 +29,7 @@ export default function FloatingChatButton() {
         <div className="relative">
           <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#C5A059] bg-white group-hover:scale-110 transition-transform duration-300">
             <Image 
-              src="/images/AlmaLiset.png" 
+              src="/images/botico.png" 
               alt="Asistente Alma" 
               width={32} 
               height={32} 

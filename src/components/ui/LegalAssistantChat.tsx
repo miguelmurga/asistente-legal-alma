@@ -235,8 +235,8 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                     <User size={20} strokeWidth={2.5} />
                   ) : (
                     <Image 
-                      src="/images/AlmaLiset.png" 
-                      alt="Lic. Alma Liset" 
+                      src="/images/botico.png" 
+                      alt="Asistente Alma" 
                       width={48} 
                       height={48} 
                       className="object-cover w-full h-full"
