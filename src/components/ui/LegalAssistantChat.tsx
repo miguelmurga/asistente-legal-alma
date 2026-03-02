@@ -17,6 +17,7 @@ interface Message {
   content: string;
   status?: 'processing' | 'completed' | 'error';
   isUrgent?: boolean;
+  options?: { label: string; value: string }[];
   contactInfo?: {
     phone?: string;
     whatsapp?: string;
@@ -24,24 +25,23 @@ interface Message {
   };
 }
 
+const ASSISTANCE_OPTIONS = [
+  { label: '⚖️ Divorcios y Pensiones', value: 'Divorcios y Pensiones' },
+  { label: '📜 Sucesiones y Herencias', value: 'Sucesiones y Herencias' },
+  { label: '🤝 Concubinato y Paternidad', value: 'Concubinato y Paternidad' },
+  { label: '🖋️ Contratos y Pagarés', value: 'Contratos y Pagarés' },
+  { label: '🏠 Convivencia y Protección', value: 'Convivencia y Protección' },
+];
+
 export default function LegalAssistantChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
       role: 'assistant',
-      content: `¡Hola! Soy el asistente virtual de la Lic. Alma Encarnación. Te brindaré orientación inicial sin costo en Colima sobre:
-
-⚖️ **Divorcios y Pensiones.**
-
-📜 **Sucesiones y Herencias.**
-
-🤝 **Concubinato y Paternidad.**
-
-🖋️ **Contratos y Pagarés.**
-
-🏠 **Convivencia y Protección.**
+      content: `¡Hola! Soy el asistente virtual de la Lic. Alma Encarnación. Te brindaré orientación inicial sin costo en Colima sobre los siguientes temas.
 
 Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
+      options: ASSISTANCE_OPTIONS,
       status: 'completed',
     },
   ]);
@@ -135,17 +135,13 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
     }
   };
 
-  const handleSend = async (e?: React.FormEvent) => {
-    e?.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    const currentInput = input;
-    setInput('');
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isLoading) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
-      content: currentInput,
+      content: text,
     };
 
     const assistantTempId = (Date.now() + 1).toString();
@@ -169,7 +165,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
         },
         body: JSON.stringify({
           conversation_id: conversationId,
-          message: currentInput,
+          message: text,
         }),
       });
 
@@ -180,6 +176,18 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
     } catch (error) {
       setIsLoading(false);
     }
+  };
+
+  const handleSend = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (!input.trim()) return;
+    const currentInput = input;
+    setInput('');
+    await sendMessage(currentInput);
+  };
+
+  const handleSelectOption = (option: string) => {
+    sendMessage(option);
   };
 
   return (
@@ -245,7 +253,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                 </div>
 
                 {/* Bubble with Whitespace and Typography */}
-                <div className={`p-6 md:p-8 rounded-3xl ${
+                <div className={`p-4 md:p-8 rounded-3xl ${
                   message.role === 'user'
                     ? 'bg-gradient-to-br from-[#062C30] to-[#0a4d54] text-white rounded-tr-none shadow-xl shadow-[#062C30]/10'
                     : `bg-white border border-slate-100 text-slate-800 rounded-tl-none shadow-xl shadow-slate-200/50`
@@ -262,8 +270,24 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                     </div>
                   )}
 
+                  {/* Assistance Options Buttons */}
+                  {message.options && message.options.length > 0 && (
+                    <div className="mt-4 flex flex-col gap-2">
+                      {message.options.map((option, idx) => (
+                        <Button
+                          key={idx}
+                          onPress={() => handleSelectOption(option.value)}
+                          variant="bordered"
+                          className="justify-start text-left border-slate-200 text-[#062C30] font-bold hover:bg-slate-50 hover:border-[#C5A059] transition-all py-3 md:py-4 h-auto whitespace-normal text-xs md:text-sm shadow-sm"
+                        >
+                          {option.label}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Quick Action Grid - Micro-Subtle Boutique Style */}
-                  {message.role === 'assistant' && message.status === 'completed' && (
+                  {message.role === 'assistant' && message.status === 'completed' && !message.options && (
                     <div className="mt-5 pt-5 border-t border-slate-50 flex flex-wrap gap-2">
                       <Button
                         as="a"
