@@ -287,7 +287,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                   )}
 
                   {/* Quick Action Grid - Micro-Subtle Boutique Style */}
-                  {message.role === 'assistant' && message.status === 'completed' && !message.options && (
+                  {message.role === 'assistant' && message.status === 'completed' && (
                     <div className="mt-5 pt-5 border-t border-slate-50 flex flex-wrap gap-2">
                       <Button
                         as="a"
@@ -335,8 +335,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="¿Qué duda legal tienes hoy?"
-            disabled={!!connectionError}
-            className="flex-1 bg-transparent outline-none px-5 py-2.5 text-[#062C30] font-sans text-sm font-medium placeholder:text-slate-300 disabled:opacity-50"
+            className="flex-1 bg-transparent outline-none px-5 py-2.5 text-[#062C30] font-sans text-sm font-medium placeholder:text-slate-300"
           />
           <Button
             type="submit"
