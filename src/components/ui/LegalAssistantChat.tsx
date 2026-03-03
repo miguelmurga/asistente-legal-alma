@@ -33,6 +33,58 @@ const ASSISTANCE_OPTIONS = [
   { label: '🏠 Convivencia y Protección', value: 'Convivencia y Protección' },
 ];
 
+const LEGAL_TIPS_COLIMA: Record<string, string[]> = {
+  'Divorcios y Pensiones': [
+    "¿El papá dice que no trabaja para no dar pensión? ¡No te preocupes! Podemos solicitar que se fije con base al salario mínimo ($315.04 diarios en Colima).",
+    "¿No te da para los gastos de tu hij@? Demandamos Pensión Alimenticia. Recuerda que es un derecho irrenunciable y prioritario.",
+    "Si el deudor alimentario oculta sus ingresos, el juez tiene la facultad de investigar sus cuentas bancarias y bienes ante el SAT.",
+    "¿Te dicen que no te darán nada porque no están casados? Falso. El derecho a la pensión nace del parentesco, no del matrimonio.",
+    "La pensión alimenticia en Colima incluye: comida, vestido, habitación, atención médica, gastos de educación y sano esparcimiento.",
+    "Si el padre tiene un trabajo formal, solicitamos el descuento directo por nómina para asegurar que el dinero llegue a tiempo.",
+    "¿Sabías que puedes pedir una 'Pensión Provisional' desde que presentas la demanda? Así no tienes que esperar hasta el final del juicio.",
+    "En Colima, el divorcio incausado permite disolver el vínculo matrimonial sin señalar una causa específica, agilizando el proceso.",
+    "Las pensiones alimenticias no solo cubren comida; incluyen educación, vestimenta, salud y recreación para los menores."
+  ],
+  'Sucesiones y Herencias': [
+    "El testamento ológrafo en México debe ser escrito de puño y letra por el testador y depositado ante el Registro Público para ser válido.",
+    "Un juicio sucesorio intestamentario se inicia cuando una persona fallece sin dejar testamento; la ley define quiénes son los herederos.",
+    "Para heredar una propiedad de Infonavit o Fovissste, es necesario revisar si el crédito contaba con seguro de vida vigente.",
+    "¿Sabías que puedes heredar deudas? Por eso es vital tramitar la herencia 'a beneficio de inventario' para proteger tu propio dinero.",
+    "Si no hay testamento, la ley de Colima prioriza a hijos y cónyuge en la repartición de bienes de forma equitativa.",
+    "El testamento ante Notario Público es la forma más segura y rápida de proteger el futuro de tu familia en México."
+  ],
+  'Concubinato y Paternidad': [
+    "El concubinato en Colima genera derechos similares al matrimonio tras 2 años de cohabitación o al tener un hijo en común.",
+    "La patria potestad no es un derecho de los padres, sino una obligación de protección y crianza en beneficio de los hijos.",
+    "En México, el derecho a la identidad es fundamental; el registro de nacimiento es gratuito y obligatorio para todos los niños.",
+    "El reconocimiento de un hijo es un acto irrevocable; una vez firmado el acta ante el Registro Civil, no se puede retirar.",
+    "Los concubinos tienen derecho a heredarse mutuamente en Colima, cumpliendo con los requisitos de ley, igual que los esposos.",
+    "Si un padre se niega a reconocer a su hijo, podemos iniciar un juicio de paternidad y solicitar la prueba pericial de ADN."
+  ],
+  'Contratos y Pagarés': [
+    "Si firmas un pagaré en blanco, estás asumiendo un riesgo legal alto. Nunca entregues documentos firmados sin montos definidos.",
+    "Los contratos de compraventa de inmuebles deben elevarse a escritura pública ante notario para que tengan plena validez legal.",
+    "Si un deudor no paga, la vía ejecutiva mercantil permite embargar bienes desde el primer momento de la notificación.",
+    "Los intereses moratorios en préstamos no pueden ser excesivos; un juez tiene el poder de reducirlos si son abusivos.",
+    "En contratos de arrendamiento, firma siempre un inventario detallado del estado de la casa para evitar cobros injustos al final.",
+    "Un contrato verbal puede ser válido, pero ante un conflicto, siempre será más fácil defenderte si tienes un documento firmado."
+  ],
+  'Convivencia y Protección': [
+    "Colima cuenta con un Centro de Justicia para las Mujeres (CJM) que ofrece asesoría y protección inmediata en casos de violencia.",
+    "En Colima, los convenios logrados en el Centro de Justicia Alternativa tienen la misma validez que una sentencia definitiva.",
+    "Al comprar un terreno, solicita siempre el Certificado de Libertad de Gravamen ante el Registro Público de la Propiedad.",
+    "Si sufres un accidente vial en Colima y no hay lesionados, puedes usar justicia alternativa para reparar los daños rápidamente.",
+    "El 'Amparo' es la herramienta jurídica más poderosa en México para protegerte contra abusos de cualquier autoridad.",
+    "Si recibes una notificación judicial, no la ignores. El tiempo para contestar es corto y el silencio puede perjudicarte mucho."
+  ],
+  'General': [
+    "La asesoría legal a tiempo evita problemas costosos en el futuro. ¡Pregúntame tus dudas sin compromiso!",
+    "En Colima, existen instituciones de defensa gratuita si no cuentas con recursos para un abogado particular.",
+    "Cualquier documento legal que firmes debe ser leído con cuidado; si no entiendes algo, es mejor no firmar hasta consultar.",
+    "Recuerda que los plazos legales son estrictos. Si tienes un problema legal, el tiempo es un factor determinante."
+  ]
+};
+
 export default function LegalAssistantChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -47,6 +99,8 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('General');
+  const [currentTipIndex, setCurrentTipIndex] = useState(0);
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [connectionError, setConnectionError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -58,6 +112,19 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    const tips = LEGAL_TIPS_COLIMA[selectedCategory] || LEGAL_TIPS_COLIMA['General'];
+    
+    if (isLoading) {
+      setCurrentTipIndex(Math.floor(Math.random() * tips.length));
+      interval = setInterval(() => {
+        setCurrentTipIndex((prev) => (prev + 1) % tips.length);
+      }, 10000);
+    }
+    return () => clearInterval(interval);
+  }, [isLoading, selectedCategory]);
 
   useEffect(() => {
     const initChat = async () => {
@@ -183,10 +250,12 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
     if (!input.trim()) return;
     const currentInput = input;
     setInput('');
+    setSelectedCategory('General');
     await sendMessage(currentInput);
   };
 
   const handleSelectOption = (option: string) => {
+    setSelectedCategory(option);
     sendMessage(option);
   };
 
@@ -260,9 +329,27 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                 }`}>
                   
                   {message.status === 'processing' ? (
-                    <div className="flex items-center gap-4 py-2">
-                      <Loader2 className="w-5 h-5 animate-spin text-[#C5A059]" />
-                      <span className="text-sm font-black text-slate-400 uppercase tracking-widest">{message.content}</span>
+                    <div className="flex flex-col gap-4 py-2">
+                      <div className="flex items-center gap-3">
+                        <Loader2 className="w-5 h-5 animate-spin text-[#C5A059]" />
+                        <span className="text-[10px] font-black text-[#062C30] uppercase tracking-[0.2em] animate-pulse">
+                          Procesando consulta...
+                        </span>
+                      </div>
+                      
+                      <motion.div 
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        key={`${selectedCategory}-${currentTipIndex}`}
+                        className="bg-[#C5A059]/5 border-l-2 border-[#C5A059] p-3 rounded-r-xl"
+                      >
+                        <p className="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest mb-1">
+                          Tip Legal de la Lic. Alma:
+                        </p>
+                        <p className="text-xs text-slate-500 italic leading-relaxed">
+                          "{(LEGAL_TIPS_COLIMA[selectedCategory] || LEGAL_TIPS_COLIMA['General'])[currentTipIndex]}"
+                        </p>
+                      </motion.div>
                     </div>
                   ) : (
                     <div className={`prose prose-sm md:prose-base max-w-none font-sans font-medium leading-relaxed ${message.role === 'user' ? 'prose-invert text-white/90' : 'text-slate-600'}`}>
