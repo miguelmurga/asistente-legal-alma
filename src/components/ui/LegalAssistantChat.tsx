@@ -57,7 +57,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isLoading]);
+  }, [messages]);
 
   useEffect(() => {
     const initChat = async () => {
@@ -335,7 +335,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="¿Qué duda legal tienes hoy?"
-            disabled={isLoading || !!connectionError}
+            disabled={!!connectionError}
             className="flex-1 bg-transparent outline-none px-5 py-2.5 text-[#062C30] font-sans text-sm font-medium placeholder:text-slate-300 disabled:opacity-50"
           />
           <Button
