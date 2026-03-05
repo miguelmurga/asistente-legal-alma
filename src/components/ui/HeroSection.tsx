@@ -49,21 +49,20 @@ const HeroSection: React.FC = () => {
                             </span>
                         </motion.div>
 
-                        <motion.h1 
+                        <motion.h1
                             variants={itemVariants}
                             className="text-5xl md:text-7xl font-serif font-bold text-[#062C30] mb-8 leading-[1.1] tracking-tight"
                         >
-                            Excelencia Jurídica <span className="font-sans text-[#C5A059]">&</span> <br />
-                            <span className="text-[#C5A059]">Compromiso Ético</span>
+                            Representación Legal <br />
+                            <span className="text-[#C5A059]">Profesional</span>
                         </motion.h1>
 
-                        <motion.p 
+                        <motion.p
                             variants={itemVariants}
                             className="text-lg md:text-xl text-slate-600 font-sans font-medium mb-12 max-w-xl leading-relaxed"
                         >
-                            Especialistas en derecho Civil, Familiar y Mercantil. Brindamos asesoría jurídica integral con un enfoque profesional y resultados sólidos.
+                            Especialistas en Derecho Civil, Familiar y Mercantil. Brindamos soluciones jurídicas directas y representación técnica para la protección de sus intereses.
                         </motion.p>
-
                         <motion.div 
                             variants={itemVariants}
                             className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto items-center justify-center lg:justify-start"

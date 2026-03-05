@@ -41,21 +41,21 @@ const AboutSection: React.FC = () => {
                         className="w-full lg:w-7/12"
                     >
                         <p className="text-sm font-black text-[#C5A059] uppercase tracking-[0.25em] mb-6">
-                            Trayectoria y Compromiso
+                            Perfil Profesional
                         </p>
                         <h2 id="about-heading" className="text-4xl md:text-5xl font-serif font-bold text-[#062C30] mb-8 leading-tight tracking-tight">
                             Lic. Alma Liset <br /> Encarnación Anaya
                         </h2>
 
                         <p className="text-lg text-slate-600 leading-relaxed mb-10 font-sans font-medium">
-                            Especialista en derecho Familiar, Civil y Mercantil. La Lic. Alma Liset brinda una representación legal ética y personalizada, enfocada en la protección del patrimonio y la resolución efectiva de conflictos jurídicos.
+                            Especialista en Derecho Familiar, Civil y Mercantil. La Lic. Alma Liset brinda representación legal bajo principios de rigor técnico y ética profesional, enfocada en la protección del patrimonio y la resolución efectiva de conflictos jurídicos.
                         </p>
 
                         <div className="space-y-6 mb-12">
                             {[
-                                "Atención 100% personalizada y empática",
-                                "Estrategias legales claras y transparentes",
-                                "Defensa tenaz de sus intereses y derechos"
+                                "Atención personalizada y directa",
+                                "Asesoría con transparencia técnica y legal",
+                                "Protección de intereses y derechos patrimoniales"
                             ].map((item, index) => (
                                 <div key={index} className="flex items-center gap-4 group">
                                     <div className="bg-slate-50 p-2 rounded-lg group-hover:bg-[#C5A059]/10 transition-colors">

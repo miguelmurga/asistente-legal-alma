@@ -39,7 +39,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <p className="text-sm font-black text-[#C5A059] uppercase tracking-[0.3em] mb-6 italic">Especialidades</p>
+                        <p className="text-sm font-black text-[#C5A059] uppercase tracking-[0.3em] mb-6">Áreas de Especialización</p>
                         <h2 id="services-heading" className="text-4xl md:text-6xl font-serif font-bold text-[#062C30] mb-8 tracking-tight leading-tight">
                             Áreas de Práctica Jurídica
                         </h2>

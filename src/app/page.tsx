@@ -11,8 +11,8 @@ import FooterSection from "@/components/ui/FooterSection";
 
 // SEO: Metadatos específicos para la página de inicio
 export const metadata: Metadata = {
-  title: "Abogados en Colima | Asesoría Legal Familiar, Civil y Mercantil - Alma Liset",
-  description: "Despacho legal en Colima: Divorcios, Pensiones Alimenticias, Testamentos, Contratos y más. Abogadas expertas en derecho Familiar, Civil y Mercantil. ¡Protegemos tus derechos!",
+  title: "Despacho Jurídico Lic. Alma Liset | Derecho Civil, Familiar y Mercantil",
+  description: "Servicios legales especializados en materia Civil, Familiar y Mercantil en Colima. Representación jurídica profesional y resultados técnicos para la protección de sus derechos.",
 };
 
 export default function Home() {
