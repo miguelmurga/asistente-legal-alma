@@ -3,160 +3,216 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ExternalLink, Search, ImageIcon } from 'lucide-react';
+import { BookOpen, Scale, ShieldCheck, Info, ExternalLink, FileText } from 'lucide-react';
 
-interface Advertisement {
+interface WikiService {
     title: string;
     description: string;
+    legalBasis: string;
     image: string;
     alt: string;
+    details: string[];
     keywords: string[];
 }
 
-const adsData: Advertisement[] = [
+const wikiData: WikiService[] = [
     {
-        title: "Divorcios en Colima: Solución Legal Efectiva",
-        description: "Asesoría especializada en divorcios incausados y voluntarios. Agilizamos su proceso legal con absoluta seriedad y profesionalismo.",
+        title: "Divorcio Incausado y Voluntario",
+        description: "De acuerdo al Código Civil del Estado de Colima, el divorcio disuelve el vínculo matrimonial y deja a los cónyuges en aptitud de contraer otro.",
+        legalBasis: "Artículos 266, 267 y 268 del Código Civil de Colima.",
         image: "/images/publi/tramite-de-divorcio-incausado-y-voluntario.png",
-        alt: "Abogada en Colima especialista en trámites de divorcio incausado y voluntario",
-        keywords: ["divorcio colima", "abogado familiar colima", "tramite de divorcio"]
+        alt: "Trámite de divorcio en Colima - Información jurídica Wiki",
+        details: [
+            "Divorcio Incausado: No requiere señalar una causa específica.",
+            "Convenio de regularización de situación de hijos y bienes.",
+            "Disolución de la sociedad conyugal."
+        ],
+        keywords: ["divorcio colima", "abogado familiar", "codigo civil colima art 266"]
     },
     {
-        title: "Pensiones Alimenticias: Protección del Menor",
-        description: "Garantizamos el sustento y bienestar de sus hijos mediante juicios de pensión alimenticia con rigor técnico.",
+        title: "Pensión Alimenticia y Sustento",
+        description: "La obligación de dar alimentos es recíproca. El que los da tiene a su vez el derecho de pedirlos.",
+        legalBasis: "Artículos 301 al 323 del Código Civil de Colima.",
         image: "/images/publi/servicios-pensiones-alimenticias.png",
-        alt: "Juicio de pensión alimenticia en Colima - Representación legal profesional",
-        keywords: ["pension alimenticia colima", "demanda de alimentos", "derecho familiar"]
+        alt: "Derecho a pensión alimenticia en Colima - Guía Wiki",
+        details: [
+            "Comprende: Comida, vestido, habitación, atención médica y educación.",
+            "Aseguramiento del pago mediante hipoteca, prenda o fianza.",
+            "Registro de Deudores Alimentarios Morosos."
+        ],
+        keywords: ["pension alimenticia colima", "demanda de alimentos", "derechos de los hijos"]
     },
     {
-        title: "Juicios Sucesorios y Testamentos",
-        description: "Especialistas en sucesiones testamentarias e intestamentarias para la adjudicación correcta de bienes y patrimonio.",
+        title: "Sucesiones y Testamentos",
+        description: "La herencia es la sucesión en todos los bienes del difunto y en todos sus derechos y obligaciones que no se extinguen por la muerte.",
+        legalBasis: "Artículos 1177 al 1280 del Código Civil de Colima.",
         image: "/images/publi/juicio-sucesorio-testamentario-intestamentario.png",
-        alt: "Abogado sucesorio en Colima - Testamentos y herencias",
-        keywords: ["juicio sucesorio colima", "testamentos", "herencias", "intestados"]
+        alt: "Juicios sucesorios y herencias en Colima - Wiki Legal",
+        details: [
+            "Sucesión Testamentaria (con voluntad del finado).",
+            "Sucesión Legítima o Intestamentaria.",
+            "Derecho a la cuarta parte de la herencia para el cónyuge supérstite."
+        ],
+        keywords: ["testamentos colima", "juicio sucesorio", "herencias colima"]
     },
     {
-        title: "Recuperación de Deuda: Cobro de Pagarés",
-        description: "Ejecución técnica de títulos de crédito y juicios mercantiles para la recuperación efectiva de su capital.",
-        image: "/images/publi/cobro-pagares-juicios-mercantiles.png",
-        alt: "Cobro de pagarés y juicios mercantiles en Colima",
-        keywords: ["cobro de pagares colima", "abogado mercantil", "juicio ejecutivo mercantil"]
+        title: "Reconocimiento de Concubinato",
+        description: "Se presumen hijos del concubinario y de la concubina los nacidos después de ciento ochenta días contados desde que comenzó el concubinato.",
+        legalBasis: "Artículo 383 del Código Civil de Colima.",
+        image: "/images/publi/reconocimiento-de-concubinato-y-union-libre.png",
+        alt: "Reconocimiento legal de concubinato en Colima - Wiki",
+        details: [
+            "Derechos sucesorios equiparables al matrimonio.",
+            "Obligaciones de asistencia y alimentos.",
+            "Protección del patrimonio familiar."
+        ],
+        keywords: ["concubinato colima", "union libre ley", "derechos concubina"]
     },
     {
         title: "Contratos Civiles y Mercantiles",
-        description: "Elaboración y revisión técnica de instrumentos legales para blindar sus operaciones y prevenir conflictos futuros.",
+        description: "El contrato es el acuerdo de dos o más personas para crear, transferir, modificar o extinguir obligaciones.",
+        legalBasis: "Artículo 1683 del Código Civil de Colima.",
         image: "/images/publi/elaboracion-contratos-civiles-mercantiles.png",
-        alt: "Redacción de contratos civiles y mercantiles profesionales en Colima",
-        keywords: ["elaboracion de contratos", "contratos mercantiles", "seguridad juridica"]
-    },
-    {
-        title: "Juicios de Paternidad y ADN",
-        description: "Procesos legales precisos para el reconocimiento de filiación con validez jurídica plena.",
-        image: "/images/publi/juicio-de-paternidad-adn-mexico.png",
-        alt: "Juicio de paternidad y pruebas de ADN con validez legal en México",
-        keywords: ["juicio de paternidad colima", "reconocimiento de hijos", "prueba de adn legal"]
-    },
-    {
-        title: "Concubinato y Unión Libre",
-        description: "Reconocimiento jurídico de la unión de hecho para garantizar derechos sucesorios y de seguridad social.",
-        image: "/images/publi/reconocimiento-de-concubinato-y-union-libre.png",
-        alt: "Reconocimiento legal de concubinato en Colima",
-        keywords: ["concubinato colima", "union libre derechos", "reconocimiento legal"]
-    },
-    {
-        title: "Convivencias y Régimen de Visitas",
-        description: "Establecimiento de regímenes de convivencia familiar priorizando siempre el interés superior de los menores.",
-        image: "/images/publi/regimen-visitas-convivencia-familiar-menores.png",
-        alt: "Abogado para régimen de visitas y convivencia familiar en Colima",
-        keywords: ["regimen de visitas colima", "convivencia familiar", "derecho de menores"]
-    },
-    {
-        title: "Órdenes de Protección Inmediata",
-        description: "Gestión urgente de medidas legales para salvaguardar la integridad física y emocional de las personas.",
-        image: "/images/publi/orden-de-proteccion-medidas-legales.png",
-        alt: "Solicitud de órdenes de protección y medidas de seguridad legal en Colima",
-        keywords: ["orden de proteccion colima", "violencia familiar ayuda legal", "medidas cautelares"]
+        alt: "Redacción de contratos en Colima - Información técnica Wiki",
+        details: [
+            "Validez por consentimiento y objeto.",
+            "Instrumentos notariales y privados.",
+            "Garantía de seguridad jurídica patrimonial."
+        ],
+        keywords: ["contratos colima", "seguridad juridica", "elaboracion de contratos"]
     }
 ];
 
-const PromoGallery: React.FC = () => {
+const WikiGallery: React.FC = () => {
     return (
-        <section className="py-24 bg-white" aria-labelledby="promo-heading">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C5A059]/10 text-[#C5A059] text-xs font-black uppercase tracking-widest mb-6">
-                            <ImageIcon size={14} /> Galería Legal Colima
+        <section className="bg-slate-50 min-h-screen pb-24" aria-labelledby="wiki-title">
+            {/* SEO Header - Hidden but readable by Google */}
+            <div className="sr-only">
+                <h1 id="wiki-title">Wiki Legal Colima: Guía del Código Civil y Servicios Jurídicos</h1>
+                <p>Información detallada sobre el Código Civil de Colima reformado en 2023. Especialidades en divorcios, pensiones, sucesiones y contratos por la Lic. Alma Liset en Colima, México.</p>
+            </div>
+
+            {/* Hero Wiki Section */}
+            <div className="bg-[#062C30] text-white py-20 px-6 mb-16">
+                <div className="container mx-auto text-center">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                        <span className="inline-flex items-center gap-2 text-[#C5A059] font-black uppercase tracking-widest text-xs mb-4">
+                            <BookOpen size={16} /> Enciclopedia Jurídica Colima
                         </span>
-                        <h1 id="promo-heading" className="text-4xl md:text-6xl font-serif font-bold text-[#062C30] mb-6">
-                            Abogados en Colima
-                        </h1>
-                        <p className="text-xl text-slate-600 max-w-3xl mx-auto font-sans font-medium">
-                            Nuestra representación legal en imágenes. Especialistas en Derecho Civil, Familiar y Mercantil con enfoque profesional.
+                        <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6">Wiki del Código Civil</h2>
+                        <p className="text-white/70 max-w-2xl mx-auto text-lg md:text-xl font-sans">
+                            Base de conocimiento legal actualizada al 2024. Encuentre información técnica y representación profesional para sus asuntos jurídicos en el Estado de Colima.
                         </p>
                     </motion.div>
                 </div>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {adsData.map((ad, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-500"
-                        >
-                            <div className="aspect-square relative overflow-hidden">
-                                <Image
-                                    src={ad.image}
-                                    alt={ad.alt}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#062C30]/90 via-[#062C30]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                                    <div className="text-white">
-                                        <p className="text-xs font-black uppercase tracking-widest text-[#C5A059] mb-2">Consulta Profesional</p>
-                                        <p className="text-base font-medium leading-relaxed mb-4">{ad.description}</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {ad.keywords.map((kw, idx) => (
-                                                <span key={idx} className="text-[10px] px-2 py-0.5 bg-white/10 rounded-full border border-white/20">#{kw.replace(/\s+/g, '')}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+            <div className="container mx-auto px-4 space-y-32">
+                {wikiData.map((item, index) => (
+                    <motion.div 
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+                    >
+                        {/* Full Screen / Large Image Column */}
+                        <div className="w-full lg:w-7/12 relative group h-[500px] md:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl">
+                            <Image 
+                                src={item.image} 
+                                alt={item.alt}
+                                fill
+                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                                sizes="100vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div className="absolute bottom-8 left-8 right-8">
+                                <span className="bg-[#C5A059] text-white px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">
+                                    Servicio Profesional
+                                </span>
+                                <h3 className="text-white text-3xl md:text-4xl font-serif font-bold">{item.title}</h3>
+                            </div>
+                        </div>
+
+                        {/* Informative Wiki Column */}
+                        <div className="w-full lg:w-5/12 space-y-8 p-4">
+                            <div className="inline-flex items-center gap-3 text-[#C5A059] font-sans font-black uppercase tracking-[0.2em] text-xs">
+                                <div className="h-[1px] w-8 bg-[#C5A059]"></div>
+                                Referencia Jurídica
                             </div>
                             
-                            <div className="p-8 bg-white border-t border-slate-50">
-                                <h3 className="text-2xl font-bold font-serif text-[#062C30] group-hover:text-[#C5A059] transition-colors flex justify-between items-center">
-                                    {ad.title}
-                                    <ExternalLink size={20} className="opacity-20 group-hover:opacity-100 transition-opacity" />
-                                </h3>
-                                <p className="text-slate-500 mt-3 font-medium text-lg leading-relaxed">
-                                    {ad.description}
-                                </p>
-                            </div>
+                            <h4 className="text-3xl font-serif font-bold text-[#062C30] leading-tight">
+                                Fundamentos Legales en Colima
+                            </h4>
 
-                            {/* Semantic metadata for Google Indexing */}
-                            <div className="sr-only">
-                                <h2>Abogado Colima - {ad.title}</h2>
-                                <p>{ad.alt}</p>
-                                <p>Especialidad en derecho en Colima México por Lic. Alma Liset.</p>
-                                <ul>
-                                    {ad.keywords.map((k, i) => <li key={i}>{k}</li>)}
+                            <p className="text-lg text-slate-600 leading-relaxed font-sans font-medium">
+                                {item.description}
+                            </p>
+
+                            <div className="bg-white p-6 rounded-2xl border-l-4 border-[#C5A059] shadow-sm space-y-4">
+                                <div className="flex items-center gap-2 text-[#062C30] font-bold">
+                                    <FileText size={20} className="text-[#C5A059]" />
+                                    <span>{item.legalBasis}</span>
+                                </div>
+                                <ul className="space-y-3">
+                                    {item.details.map((detail, dIdx) => (
+                                        <li key={dIdx} className="flex items-start gap-2 text-slate-500 text-sm">
+                                            <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300 shrink-0" />
+                                            {detail}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                        </motion.div>
-                    ))}
+
+                            <div className="flex flex-wrap gap-2 pt-4">
+                                {item.keywords.map((kw, kIdx) => (
+                                    <span key={kIdx} className="text-[10px] text-slate-400 font-black uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-md">
+                                        #{kw.replace(/\s+/g, '_')}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div className="pt-8">
+                                <a 
+                                    href="#contacto" 
+                                    className="inline-flex items-center gap-3 bg-[#062C30] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#C5A059] transition-colors group"
+                                >
+                                    Solicitar Representación Táctica
+                                    <ExternalLink size={18} className="transition-transform group-hover:translate-x-1" />
+                                </a>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* General SEO Wiki Block at the bottom */}
+            <div className="container mx-auto px-6 mt-32 pt-20 border-t border-slate-200">
+                <div className="max-w-4xl mx-auto prose prose-slate">
+                    <h2 className="text-3xl font-serif font-bold text-[#062C30] mb-8">Información sobre el Código Civil para el Estado de Colima</h2>
+                    <p className="text-slate-600 leading-loose">
+                        El <strong>Código Civil del Estado de Colima</strong> es el cuerpo normativo que regula las relaciones civiles entre las personas en nuestra entidad. Reformado recientemente para incluir disposiciones sobre el Registro de Deudores Alimentarios y procedimientos de divorcio más ágiles, representa la base jurídica para la protección de la familia y el patrimonio. Como <strong>abogada en Colima</strong>, la Lic. Alma Liset utiliza estos fundamentos para garantizar que cada proceso legal se lleve a cabo con estricto apego a la ley vigente, brindando seguridad y resultados a sus clientes.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                        <div className="flex items-start gap-4">
+                            <Scale className="text-[#C5A059] shrink-0" size={24} />
+                            <div>
+                                <h5 className="font-bold text-[#062C30]">Justicia Efectiva</h5>
+                                <p className="text-sm text-slate-500">Aplicación técnica de los artículos del código para resoluciones favorables.</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                            <ShieldCheck className="text-[#C5A059] shrink-0" size={24} />
+                            <div>
+                                <h5 className="font-bold text-[#062C30]">Protección Patrimonial</h5>
+                                <p className="text-sm text-slate-500">Defensa legal basada en los títulos de propiedad y sucesiones establecidos.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     );
 };
 
-export default PromoGallery;
+export default WikiGallery;

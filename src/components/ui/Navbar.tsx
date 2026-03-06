@@ -30,7 +30,7 @@ export default function Navbar() {
 
     const menuItems = [
         { name: "Inicio", href: "/" },
-        { name: "Galería", href: "/galeria" },
+        { name: "Wiki Legal", href: "/galeria" },
         { name: "Asistente Virtual", href: "/asistente" },
         { name: "Áreas de Práctica", href: "/#servicios" },
         { name: "La Firma", href: "/#perfil" },
