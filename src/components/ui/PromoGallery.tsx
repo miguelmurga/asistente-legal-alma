@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { BookOpen, Scale, ShieldCheck, Info, ExternalLink, FileText, Image as ImageIcon } from 'lucide-react';
+import { BookOpen, Scale, ShieldCheck, ExternalLink, FileText, Image as ImageIcon } from 'lucide-react';
 
 interface WikiService {
     title: string;
@@ -43,7 +43,7 @@ const wikiData: WikiService[] = [
         keywords: ["pension alimenticia colima", "demanda de alimentos", "derechos de los hijos"]
     },
     {
-        title: "Sucesiones y Testamentos",
+        title: "Juicios Sucesorios y Testamentos",
         description: "La herencia es la sucesión en todos los bienes del difunto y en todos sus derechos y obligaciones que no se extinguen por la muerte.",
         legalBasis: "Artículos 1177 al 1280 del Código Civil de Colima.",
         image: "/images/publi/juicio-sucesorio-testamentario-intestamentario.png",
@@ -54,6 +54,19 @@ const wikiData: WikiService[] = [
             "Derecho a la cuarta parte de la herencia para el cónyuge supérstite."
         ],
         keywords: ["testamentos colima", "juicio sucesorio", "herencias colima"]
+    },
+    {
+        title: "Cobro de Pagarés y Títulos de Crédito",
+        description: "La acción cambiaria contra el aceptante o sus avalistas prescribe en tres años contados desde la fecha del vencimiento.",
+        legalBasis: "Ley General de Títulos y Operaciones de Crédito.",
+        image: "/images/publi/cobro-pagares-juicios-mercantiles.png",
+        alt: "Cobro de pagarés en Colima - Juicio Ejecutivo Mercantil",
+        details: [
+            "Embargo precautorio de bienes para garantizar el pago.",
+            "Recuperación de capital e intereses moratorios.",
+            "Ejecución de sentencias mercantiles."
+        ],
+        keywords: ["cobro de pagares", "abogado mercantil colima", "juicio mercantil"]
     },
     {
         title: "Reconocimiento de Concubinato",
@@ -67,6 +80,45 @@ const wikiData: WikiService[] = [
             "Protección del patrimonio familiar."
         ],
         keywords: ["concubinato colima", "union libre ley", "derechos concubina"]
+    },
+    {
+        title: "Juicios de Paternidad y ADN",
+        description: "El derecho a la identidad es un derecho humano. El Código Civil permite la investigación de la paternidad y la maternidad.",
+        legalBasis: "Artículos 340 al 353 del Código Civil de Colima.",
+        image: "/images/publi/juicio-de-paternidad-adn-mexico.png",
+        alt: "Juicio de paternidad en Colima - Prueba de ADN",
+        details: [
+            "Reconocimiento de hijos nacidos fuera de matrimonio.",
+            "Prueba pericial en genética molecular (ADN).",
+            "Derechos de filiación y apellido."
+        ],
+        keywords: ["juicio de paternidad", "prueba adn colima", "reconocimiento hijos"]
+    },
+    {
+        title: "Órdenes de Protección",
+        description: "Las autoridades deben dictar medidas urgentes para garantizar la seguridad física y emocional de las personas en riesgo.",
+        legalBasis: "Ley de Acceso de las Mujeres a una Vida Libre de Violencia para el Estado de Colima.",
+        image: "/images/publi/orden-de-proteccion-medidas-legales.png",
+        alt: "Órdenes de protección legal en Colima",
+        details: [
+            "Separación inmediata del agresor del domicilio.",
+            "Prohibición de acercarse a la víctima.",
+            "Protección policial y acompañamiento legal."
+        ],
+        keywords: ["orden de proteccion", "violencia familiar", "ayuda legal colima"]
+    },
+    {
+        title: "Convivencias y Régimen de Visitas",
+        description: "El Juez de lo Familiar fijará el régimen de convivencia velando siempre por el interés superior del menor.",
+        legalBasis: "Artículo 282 del Código Civil de Colima.",
+        image: "/images/publi/regimen-visitas-convivencia-familiar-menores.png",
+        alt: "Régimen de convivencias en Colima - Derecho Familiar",
+        details: [
+            "Regulación de días y horarios de visita.",
+            "Convivencias supervisadas en casos necesarios.",
+            "Derecho del menor a mantener vínculos con ambos progenitores."
+        ],
+        keywords: ["convivencias", "regimen de visitas", "derecho familiar colima"]
     },
     {
         title: "Contratos Civiles y Mercantiles",
@@ -86,13 +138,11 @@ const wikiData: WikiService[] = [
 const WikiGallery: React.FC = () => {
     return (
         <section className="bg-slate-50 min-h-screen pb-24" aria-labelledby="wiki-title">
-            {/* SEO Header - Hidden but readable by Google */}
             <div className="sr-only">
                 <h1 id="wiki-title">Wiki Legal Colima: Guía del Código Civil y Servicios Jurídicos</h1>
                 <p>Información detallada sobre el Código Civil de Colima reformado en 2023. Especialidades en divorcios, pensiones, sucesiones y contratos por la Lic. Alma Liset en Colima, México.</p>
             </div>
 
-            {/* Hero Wiki Section */}
             <div className="bg-[#062C30] text-white py-20 px-6 mb-16">
                 <div className="container mx-auto text-center">
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -116,27 +166,28 @@ const WikiGallery: React.FC = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
                     >
-                        {/* Vertical Image Column - Clickable to Assistant */}
+                        {/* Contenedor de Imagen Vertical Corregido */}
                         <motion.a 
                             href="/asistente"
                             whileHover={{ scale: 1.01 }}
-                            className="w-full lg:w-5/12 relative group aspect-[3/4] md:h-[700px] bg-slate-100 rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200 cursor-pointer"
+                            className="w-full lg:w-5/12 relative group block bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200 cursor-pointer min-h-[500px] md:min-h-[700px]"
                         >
                             <Image 
                                 src={item.image} 
                                 alt={item.alt}
                                 fill
-                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                                unoptimized={true} // Desactivamos optimización temporal para asegurar carga de archivos pesados
+                                style={{ objectFit: 'contain' }}
+                                className="transition-transform duration-1000 group-hover:scale-105 p-2"
                                 sizes="(max-width: 1024px) 100vw, 40vw"
                             />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
-                                <div className="bg-white/90 backdrop-blur-md p-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-500 shadow-xl text-[#062C30] flex items-center gap-2 font-bold">
-                                    <ImageIcon size={20} /> Consultar con IA
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500 flex items-center justify-center pointer-events-none">
+                                <div className="bg-white/95 backdrop-blur-md p-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-500 shadow-xl text-[#062C30] flex items-center gap-2 font-bold border border-slate-100">
+                                    <ImageIcon size={20} /> Consultar con Asistente Virtual
                                 </div>
                             </div>
                         </motion.a>
 
-                        {/* Informative Wiki Column */}
                         <div className="w-full lg:w-7/12 space-y-8 p-4">
                             <div className="inline-flex items-center gap-3 text-[#C5A059] font-sans font-black uppercase tracking-[0.2em] text-[10px]">
                                 <div className="h-[1px] w-8 bg-[#C5A059]"></div>
@@ -188,7 +239,6 @@ const WikiGallery: React.FC = () => {
                 ))}
             </div>
 
-            {/* General SEO Wiki Block at the bottom */}
             <div className="container mx-auto px-6 mt-32 pt-20 border-t border-slate-200">
                 <div className="max-w-4xl mx-auto prose prose-slate">
                     <h2 className="text-3xl font-serif font-bold text-[#062C30] mb-8">Información sobre el Código Civil para el Estado de Colima</h2>
@@ -213,6 +263,34 @@ const WikiGallery: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Semantic SEO Articles - Visually hidden but accessible to screen readers and search engines */}
+            <article className="sr-only">
+                <header>
+                    <h2>El Mejor Abogado en Colima para Trámites de Divorcio y Derecho Familiar</h2>
+                    <p>Publicado por Despacho Jurídico Lic. Alma Liset</p>
+                </header>
+                <section>
+                    <h3>¿Busca un abogado en Colima experto en derecho familiar?</h3>
+                    <p>Encontrar al mejor <strong>abogado en Colima</strong> es fundamental cuando se enfrenta a procesos legales delicados como un divorcio, la exigencia de una pensión alimenticia o la regularización de la guarda y custodia de menores. En nuestro despacho jurídico, liderado por la Licenciada Alma Liset Encarnación Anaya, ofrecemos asesoría legal de primer nivel en el Estado de Colima, basando nuestras estrategias estrictamente en el Código Civil vigente.</p>
+                </section>
+                <section>
+                    <h3>El Divorcio Incausado en el Estado de Colima</h3>
+                    <p>De acuerdo con las recientes reformas al Código Civil del Estado de Colima (Artículos 266, 267 y 268), el divorcio incausado permite la disolución del vínculo matrimonial sin la necesidad de probar causales como el abandono o el adulterio. Si usted necesita tramitar un <strong>divorcio exprés en Colima</strong>, nuestro equipo de abogados se encarga de redactar la propuesta de convenio que regulará aspectos vitales como: la pensión alimenticia, la custodia de los hijos, el régimen de convivencias y la liquidación de la sociedad conyugal (bienes mancomunados). Este proceso ágil garantiza que sus derechos y su paz mental queden protegidos.</p>
+                </section>
+                <section>
+                    <h3>Pensiones Alimenticias y el Registro de Deudores en Colima</h3>
+                    <p>Garantizar el sustento de los hijos es una prioridad absoluta. Los artículos 301 al 323 del Código Civil de Colima establecen que la obligación de dar alimentos es recíproca y debe ser proporcional a las posibilidades del que los da y a la necesidad del que los recibe. Como su <strong>abogada en Colima</strong>, tramito demandas de alimentos eficaces. Además, la ley en Colima ahora contempla el Registro de Deudores Alimentarios Morosos, una herramienta legal poderosa para obligar el cumplimiento del pago mediante restricciones civiles e incluso migratorias.</p>
+                </section>
+                <section>
+                    <h3>Testamentos y Juicios Sucesorios en Colima</h3>
+                    <p>Para proteger su patrimonio y evitar conflictos familiares futuros, redactar un testamento es la decisión más inteligente. Si un familiar ha fallecido sin testamento, somos especialistas en <strong>juicios sucesorios intestamentarios en Colima</strong>, guiando a los herederos legales a través del proceso de nombramiento de albacea, inventario de bienes y adjudicación final, conforme a lo establecido desde el artículo 1177 del Código Civil.</p>
+                </section>
+                <footer>
+                    <p>Contacte a nuestro despacho jurídico en Colima para programar una consulta. Ubicados en Plaza Roma, Avenida San Fernando. Atención especializada, ética profesional y resultados jurídicos comprobables.</p>
+                    <p>Palabras clave de búsqueda: <strong>abogados en colima, mejor abogado familiar colima, trámite de divorcio colima, pensión alimenticia, despacho legal colima, asesoría jurídica, testamentos, juicios mercantiles, cobro de pagarés.</strong></p>
+                </footer>
+            </article>
         </section>
     );
 };
