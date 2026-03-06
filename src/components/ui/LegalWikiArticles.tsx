@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Book, FileText, Landmark, Users, Home, Gavel, Shield, ScrollText, Scale, Briefcase, Clock, MapMap } from 'lucide-react';
+import { Book, FileText, Landmark, Users, Home, Gavel, Shield, ScrollText, Scale, Briefcase, Clock, Map } from 'lucide-react';
 
 const wikiArticles = [
     {
@@ -72,7 +72,7 @@ const wikiArticles = [
         tags: ["Responsabilidad Civil", "Daño Moral Colima", "Gestión de Negocios"]
     },
     {
-        icon: <MapMap className="text-[#C5A059]" size={24} />,
+        icon: <Map className="text-[#C5A059]" size={24} />,
         title: "Servidumbres Legales y Voluntarias",
         content: "La servidumbre es un gravamen real impuesto sobre un inmueble en beneficio de otro perteneciente a distinto dueño (Art. 1053). En zonas rústicas y urbanas de Colima, son comunes las servidumbres legales de desagüe y de paso. El propietario de una finca enclavada sin salida a la vía pública tiene derecho de exigir paso por las heredades vecinas, pagando la indemnización correspondiente.",
         tags: ["Servidumbre de Paso", "Conflictos de Linderos", "Derecho Inmobiliario"]
@@ -133,7 +133,7 @@ const LegalWikiArticles: React.FC = () => {
                 <div className="sr-only">
                     <h4>Servicios Legales en todos los municipios de Colima</h4>
                     <p>Atención jurídica profesional en Colima capital, Villa de Álvarez, Manzanillo, Tecomán, Armería, Comala, Coquimatlán, Cuauhtémoc, Ixtlahuacán y Minatitlán. Busco abogado en Colima, despacho jurídico cerca de mi, lic alma liset colima, abogada de divorcios, pensiones alimenticias baratas colima, como tramitar un testamento en colima, juicio sucesorio rapido, abogado mercantil ejecutivo, cobranza judicial colima, asesoria legal gratuita en linea mexico colima.</p>
-                    <p>Especialistas en demandas civiles, contestación de demandas, embargos, cancelación de embargos, juicios reivindicatorios, juicios de usucapión, prescripción positiva, prescripción negativa, nulidad de matrimonio, divorcio incausado express, divorcio voluntario administrativo, pensión alimenticia retroactiva, reducción de pensión alimenticia, pérdida de patria potestad, guarda y custodia compartida, régimen de visitas y convivencias, restitución internacional de menores, adopción plena civil, reconocimiento de paternidad ADN, desconocimiento de paternidad, rectificación de actas de nacimiento registro civil, aclaración de actas, cambio de nombre legal, jurisdicción voluntaria, diligencias de información ad perpetuam, contratos de arrendamiento de casas locales comerciales, elaboración de pagarés, cobro de cheques vencidos, endoso en procuración, daños y perjuicios, daño moral accidentes, responsabilidad civil objetiva y subjetiva, interdicción, nombramiento de tutor legal, albacea testamentario, sucesión legítima intestado de bienes, avalúo e inventario, partición de herencia familiar, cesión de derechos hereditarios, copropiedad, división de la cosa común, usufructo vitalicio para padres, servidumbre de paso predios rústicos urbanos, hipotecas y cancelación de hipotecas en el registro público de la propiedad Colima.</p>
+                    <p>Especialistas en demandas civiles, contestación de demandas, embargos, cancelación de embargos, juicios reivindicatorios, juicios de usucapión, prescripción positiva, prescripción negativa, nulidad de matrimonio, divorcio incausado express, divorcio voluntario administrativo, pensión alimenticia retroactiva, reducción de pensión alimenticia, pérdida de patria potestad, guarda y custodia compartida, régimen de visitas y convivencias, restitución internacional de menores, adopción plena civil, reconocimiento de paternidad ADN, desconocimiento de paternidad, rectificación de actas de nacimiento registro civil, aclaración de actas, cambio de nombre legal, jurisdicción voluntaria, diligencias de información ad perpetuam, contratos de arrendamiento de casas locales comerciales, elaboración de pagarés, cobro de cheques vencidos, endoso en procuración, daños y perjuicios, daño moral accidentes, responsabilidad civil objetiva y subjetiva, interdicción, nommramiento de tutor legal, albacea testamentario, sucesión legítima intestado de bienes, avalúo e inventario, partición de herencia familiar, cesión de derechos hereditarios, copropiedad, división de la cosa común, usufructo vitalicio para padres, servidumbre de paso predios rústicos urbanos, hipotecas y cancelación de hipotecas en el registro público de la propiedad Colima.</p>
                 </div>
             </div>
         </section>
