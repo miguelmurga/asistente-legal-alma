@@ -30,6 +30,7 @@ export default function Navbar() {
 
     const menuItems = [
         { name: "Inicio", href: "/" },
+        { name: "Galería", href: "/galeria" },
         { name: "Asistente Virtual", href: "/asistente" },
         { name: "Áreas de Práctica", href: "/#servicios" },
         { name: "La Firma", href: "/#perfil" },
@@ -77,7 +78,7 @@ export default function Navbar() {
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-12" justify="center">
-                {menuItems.slice(0, 4).map((item) => (
+                {menuItems.slice(0, 5).map((item) => (
                     <NavbarItem key={item.name}>
                         <Link 
                             href={item.href}
