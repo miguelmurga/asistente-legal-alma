@@ -116,33 +116,26 @@ const WikiGallery: React.FC = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
                     >
-                        {/* Full Screen / Large Image Column */}
-                        <div className="w-full lg:w-7/12 relative group h-[500px] md:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl">
+                        {/* Full Image Column - Contain to show all text in PNG */}
+                        <div className="w-full lg:w-7/12 relative group h-[400px] md:h-[600px] bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100">
                             <Image 
                                 src={item.image} 
                                 alt={item.alt}
                                 fill
-                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                                sizes="100vw"
+                                className="object-contain transition-transform duration-1000 group-hover:scale-[1.02]"
+                                sizes="(max-width: 1024px) 100vw, 60vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                            <div className="absolute bottom-8 left-8 right-8">
-                                <span className="bg-[#C5A059] text-white px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">
-                                    Servicio Profesional
-                                </span>
-                                <h3 className="text-white text-3xl md:text-4xl font-serif font-bold">{item.title}</h3>
-                            </div>
                         </div>
 
                         {/* Informative Wiki Column */}
                         <div className="w-full lg:w-5/12 space-y-8 p-4">
-                            <div className="inline-flex items-center gap-3 text-[#C5A059] font-sans font-black uppercase tracking-[0.2em] text-xs">
+                            <div className="inline-flex items-center gap-3 text-[#C5A059] font-sans font-black uppercase tracking-[0.2em] text-[10px]">
                                 <div className="h-[1px] w-8 bg-[#C5A059]"></div>
-                                Referencia Jurídica
+                                Información Jurídica
                             </div>
                             
                             <h4 className="text-3xl font-serif font-bold text-[#062C30] leading-tight">
-                                Fundamentos Legales en Colima
+                                {item.title}
                             </h4>
 
                             <p className="text-lg text-slate-600 leading-relaxed font-sans font-medium">
@@ -150,8 +143,8 @@ const WikiGallery: React.FC = () => {
                             </p>
 
                             <div className="bg-white p-6 rounded-2xl border-l-4 border-[#C5A059] shadow-sm space-y-4">
-                                <div className="flex items-center gap-2 text-[#062C30] font-bold">
-                                    <FileText size={20} className="text-[#C5A059]" />
+                                <div className="flex items-center gap-2 text-[#062C30] font-bold text-sm">
+                                    <FileText size={18} className="text-[#C5A059]" />
                                     <span>{item.legalBasis}</span>
                                 </div>
                                 <ul className="space-y-3">
@@ -174,10 +167,10 @@ const WikiGallery: React.FC = () => {
 
                             <div className="pt-8">
                                 <a 
-                                    href="#contacto" 
+                                    href="/asistente" 
                                     className="inline-flex items-center gap-3 bg-[#062C30] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#C5A059] transition-colors group"
                                 >
-                                    Solicitar Representación Táctica
+                                    Iniciar Consulta Legal
                                     <ExternalLink size={18} className="transition-transform group-hover:translate-x-1" />
                                 </a>
                             </div>

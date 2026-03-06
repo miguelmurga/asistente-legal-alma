@@ -82,7 +82,7 @@ export default function Navbar() {
                     <NavbarItem key={item.name}>
                         <Link 
                             href={item.href}
-                            className="font-sans text-sm font-black text-[#062C30]/70 hover:text-[#C5A059] uppercase tracking-[0.15em] no-underline transition-all relative group"
+                            className="font-sans text-xs font-black text-[#062C30]/70 hover:text-[#C5A059] uppercase tracking-[0.15em] no-underline transition-all relative group"
                         >
                             {item.name}
                             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
