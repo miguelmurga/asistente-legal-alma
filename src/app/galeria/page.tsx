@@ -2,6 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import WikiGallery from "@/components/ui/PromoGallery";
+import LegalWikiArticles from "@/components/ui/LegalWikiArticles";
 import FooterSection from "@/components/ui/FooterSection";
 
 export const metadata: Metadata = {
@@ -97,6 +98,7 @@ export default function GaleriaPage() {
       <Navbar />
       <main className="flex-1">
         <WikiGallery />
+        <LegalWikiArticles />
       </main>
       <FooterSection />
     </div>
