@@ -116,41 +116,50 @@ const WikiGallery: React.FC = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
                     >
-                        {/* Full Image Column - Contain to show all text in PNG */}
-                        <div className="w-full lg:w-7/12 relative group h-[400px] md:h-[600px] bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100">
+                        {/* Vertical Image Column - Clickable to Assistant */}
+                        <motion.a 
+                            href="/asistente"
+                            whileHover={{ scale: 1.01 }}
+                            className="w-full lg:w-5/12 relative group aspect-[3/4] md:h-[700px] bg-slate-100 rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200 cursor-pointer"
+                        >
                             <Image 
                                 src={item.image} 
                                 alt={item.alt}
                                 fill
-                                className="object-contain transition-transform duration-1000 group-hover:scale-[1.02]"
-                                sizes="(max-width: 1024px) 100vw, 60vw"
+                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                                sizes="(max-width: 1024px) 100vw, 40vw"
                             />
-                        </div>
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+                                <div className="bg-white/90 backdrop-blur-md p-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-500 shadow-xl text-[#062C30] flex items-center gap-2 font-bold">
+                                    <ImageIcon size={20} /> Consultar con IA
+                                </div>
+                            </div>
+                        </motion.a>
 
                         {/* Informative Wiki Column */}
-                        <div className="w-full lg:w-5/12 space-y-8 p-4">
+                        <div className="w-full lg:w-7/12 space-y-8 p-4">
                             <div className="inline-flex items-center gap-3 text-[#C5A059] font-sans font-black uppercase tracking-[0.2em] text-[10px]">
                                 <div className="h-[1px] w-8 bg-[#C5A059]"></div>
-                                Información Jurídica
+                                Información Jurídica Especializada
                             </div>
                             
-                            <h4 className="text-3xl font-serif font-bold text-[#062C30] leading-tight">
+                            <h4 className="text-4xl font-serif font-bold text-[#062C30] leading-tight">
                                 {item.title}
                             </h4>
 
-                            <p className="text-lg text-slate-600 leading-relaxed font-sans font-medium">
+                            <p className="text-xl text-slate-600 leading-relaxed font-sans font-medium">
                                 {item.description}
                             </p>
 
-                            <div className="bg-white p-6 rounded-2xl border-l-4 border-[#C5A059] shadow-sm space-y-4">
-                                <div className="flex items-center gap-2 text-[#062C30] font-bold text-sm">
-                                    <FileText size={18} className="text-[#C5A059]" />
-                                    <span>{item.legalBasis}</span>
+                            <div className="bg-white p-8 rounded-3xl border-l-8 border-[#C5A059] shadow-sm space-y-6">
+                                <div className="flex items-center gap-3 text-[#062C30] font-black text-base uppercase tracking-tighter">
+                                    <FileText size={22} className="text-[#C5A059]" />
+                                    <span>Fundamento: {item.legalBasis}</span>
                                 </div>
-                                <ul className="space-y-3">
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {item.details.map((detail, dIdx) => (
-                                        <li key={dIdx} className="flex items-start gap-2 text-slate-500 text-sm">
-                                            <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300 shrink-0" />
+                                        <li key={dIdx} className="flex items-start gap-3 text-slate-500 text-base">
+                                            <ShieldCheck size={18} className="text-[#C5A059] shrink-0 mt-1" />
                                             {detail}
                                         </li>
                                     ))}
@@ -159,7 +168,7 @@ const WikiGallery: React.FC = () => {
 
                             <div className="flex flex-wrap gap-2 pt-4">
                                 {item.keywords.map((kw, kIdx) => (
-                                    <span key={kIdx} className="text-[10px] text-slate-400 font-black uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-md">
+                                    <span key={kIdx} className="text-[11px] text-slate-400 font-black uppercase tracking-widest bg-slate-100 px-4 py-1.5 rounded-lg border border-slate-200">
                                         #{kw.replace(/\s+/g, '_')}
                                     </span>
                                 ))}
@@ -167,11 +176,11 @@ const WikiGallery: React.FC = () => {
 
                             <div className="pt-8">
                                 <a 
-                                    href="/asistente" 
-                                    className="inline-flex items-center gap-3 bg-[#062C30] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#C5A059] transition-colors group"
+                                    href="/#contacto" 
+                                    className="inline-flex items-center gap-4 bg-[#C5A059] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-[#062C30] transition-all shadow-xl shadow-[#C5A059]/20 group active:scale-95"
                                 >
-                                    Iniciar Consulta Legal
-                                    <ExternalLink size={18} className="transition-transform group-hover:translate-x-1" />
+                                    Agendar Cita en Despacho
+                                    <ExternalLink size={20} className="transition-transform group-hover:translate-x-1" />
                                 </a>
                             </div>
                         </div>
