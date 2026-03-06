@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { BookOpen, Scale, ShieldCheck, Info, ExternalLink, FileText } from 'lucide-react';
+import { BookOpen, Scale, ShieldCheck, Info, ExternalLink, FileText, Image as ImageIcon } from 'lucide-react';
 
 interface WikiService {
     title: string;
