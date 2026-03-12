@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { BookOpen, Scale, ShieldCheck, ExternalLink, FileText, Image as ImageIcon } from 'lucide-react';
 
 interface WikiService {
@@ -132,6 +133,19 @@ const wikiData: WikiService[] = [
             "Garantía de seguridad jurídica patrimonial."
         ],
         keywords: ["contratos colima", "seguridad juridica", "elaboracion de contratos"]
+    },
+    {
+        title: "Pérdida de Patria Potestad",
+        description: "La patria potestad puede perderse por resolución judicial en casos de abandono, violencia o incumplimiento de deberes alimentarios.",
+        legalBasis: "Artículos 444 al 448 del Código Civil de Colima.",
+        image: "/images/publi/servicios-legales-familia-civil-mercantil.png",
+        alt: "Juicio de pérdida de patria potestad en Colima - Guía Wiki",
+        details: [
+            "Causales: Maltrato, abandono por más de 6 meses, o delitos contra el menor.",
+            "Suspensión por incapacidad declarada o ausencia.",
+            "Restitución solo en casos específicos y bajo interés superior del menor."
+        ],
+        keywords: ["patria potestad colima", "perdiad patria potestad", "derechos menores"]
     }
 ];
 
@@ -226,13 +240,13 @@ const WikiGallery: React.FC = () => {
                             </div>
 
                             <div className="pt-8">
-                                <a 
+                                <Link 
                                     href="/#contacto" 
                                     className="inline-flex items-center gap-4 bg-[#C5A059] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-[#062C30] transition-all shadow-xl shadow-[#C5A059]/20 group active:scale-95"
                                 >
                                     Agendar Cita en Despacho
                                     <ExternalLink size={20} className="transition-transform group-hover:translate-x-1" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

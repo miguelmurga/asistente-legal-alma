@@ -4,12 +4,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
     ArrowRight, HeartCrack, Baby, ScrollText, HeartHandshake, 
-    Banknote, FileSignature, ShieldAlert, Fingerprint, CalendarClock 
+    Banknote, FileSignature, ShieldAlert, Fingerprint, CalendarClock,
+    Scale, UserX
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ElementType> = {
     HeartCrack, Baby, ScrollText, HeartHandshake, Banknote, 
-    FileSignature, ShieldAlert, Fingerprint, CalendarClock
+    FileSignature, ShieldAlert, Fingerprint, CalendarClock,
+    Scale, UserX
 };
 
 export interface Service {

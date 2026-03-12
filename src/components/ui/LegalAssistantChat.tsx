@@ -347,7 +347,7 @@ Chat inicial: **Gratis**. ¿Cuál es tu duda legal?`,
                           Tip Legal de la Lic. Alma:
                         </p>
                         <p className="text-xs text-slate-500 italic leading-relaxed">
-                          "{(LEGAL_TIPS_COLIMA[selectedCategory] || LEGAL_TIPS_COLIMA['General'])[currentTipIndex]}"
+                          &quot;{(LEGAL_TIPS_COLIMA[selectedCategory] || LEGAL_TIPS_COLIMA['General'])[currentTipIndex]}&quot;
                         </p>
                       </motion.div>
                     </div>

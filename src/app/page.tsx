@@ -8,6 +8,7 @@ import ServicesSection, { Service } from "@/components/ui/ServicesSection";
 import AboutSection from "@/components/ui/AboutSection";
 import ContactSection from "@/components/ui/ContactSection";
 import FooterSection from "@/components/ui/FooterSection";
+import AIQuickActionSection from "@/components/ui/AIQuickActionSection";
 
 // SEO: Metadatos específicos para la página de inicio
 export const metadata: Metadata = {
@@ -25,7 +26,8 @@ export default function Home() {
         { id: 6, title: "Contratos", description: "Elaboración y revisión de contratos civiles y mercantiles para prevenir conflictos futuros.", icon: 'FileSignature' },
         { id: 7, title: "Órdenes de Protección", description: "Medidas legales urgentes para garantizar la seguridad física y emocional de las personas.", icon: 'ShieldAlert' },
         { id: 8, title: "Juicios de Paternidad", description: "Procesos de reconocimiento o desconocimiento de paternidad (ADN) y filiación.", icon: 'Fingerprint' },
-        { id: 9, title: "Convivencias", description: "Regulación de regímenes de visitas y convivencias familiares velando por el interés superior del menor.", icon: 'CalendarClock' }
+        { id: 9, title: "Convivencias", description: "Regulación de regímenes de visitas y convivencias familiares velando por el interés superior del menor.", icon: 'CalendarClock' },
+        { id: 10, title: "Patria Potestad", description: "Juicios de pérdida o suspensión de patria potestad para garantizar el bienestar de los menores.", icon: 'UserX' }
     ];
 
     return (
@@ -39,6 +41,9 @@ export default function Home() {
                 <div className="h-24 md:h-48 bg-slate-50" />
 
                 <ServicesSection services={servicesData} />
+
+                {/* AI Quick Action Section for Patria Potestad */}
+                <AIQuickActionSection />
 
                 {/* Massive Spacing between Services and About */}
                 <div className="h-24 md:h-48 bg-white" />
